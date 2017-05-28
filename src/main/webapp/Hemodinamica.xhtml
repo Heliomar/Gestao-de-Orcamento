@@ -1,0 +1,139 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/Layout.xhtml">
+	
+	<ui:define name="content">
+		<h1 class="aw-page-title">Hemodinâmica do Paciente</h1>
+                
+                <p:messages autoUpdate="false" />
+			
+                <h:form>
+				<p:panelGrid id="capaPanel" columns="4" layout="grid" 
+					style="margin-top: 20px; margin-bottom: 40px"
+					styleClass="panelgrid-noborder"
+					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
+                
+                
+                                    <p:outputLabel value="Nome do Paciente" for="nome" class="ui-panelgrid"/>
+                    <p:inputText id="nome" required="true" placeholder="nome" maxlength="25" />
+                    
+                    <p:outputLabel value="Atendimento" for="atendimento" class="ui-panelgrid"/>
+                    <p:inputMask mask="999999" id="atendimento" required="true" placeholder="atendimento" maxlength="7" />
+                    
+                    <p:outputLabel value="Leito do Paciente" for="leito" class="ui-panelgrid"/>
+                    <p:inputMask mask="999" id="leito" required="true" placeholder="leito" maxlength="3" />
+                    
+                              </p:panelGrid>
+                </h:form> 
+                
+                <h:form id="form">
+                    <p:panelGrid id="capaPanel" columns="4" layout="grid" 
+					style="margin-top: 20px; margin-bottom: 40px"
+					styleClass="panelgrid-noborder"
+					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
+                        
+                       <p:outputLabel value="Medico Plantonista" for="nomeMedico" class="ui-panelgrid" />
+                    <p:inputText id="nomeMedico" required="true" placeholder="Medico Plantonista" maxlength="32" />
+                    
+                        
+                        <p:outputLabel for="datetime" value="Data/Hora :" class="ui-panelgrid"/>
+                        <p:calendar id="datetime" value="#{calendarView.date10}" pattern="MM/dd/yyyy HH:mm:ss" required="true"/>
+ 
+        
+                    </p:panelGrid>
+                </h:form>           
+                              
+		
+		<h:form id="frm">
+                    <p:toolbar class="divisorias">
+                        <p:toolbarGroup class="divisorias">
+						                                    
+				</p:toolbarGroup>
+			</p:toolbar>
+			
+			
+			<p:messages autoUpdate="false" />
+			
+			<div class="ui-fluid">
+				<p:panelGrid id="capaPanel" columns="4" layout="grid" 
+					style="margin-top: 20px; margin-bottom: 40px"
+					styleClass="panelgrid-noborder"
+					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
+			
+				</p:panelGrid>
+			</div>
+			
+			
+		
+                </h:form>	
+				
+                <h:form>
+                   
+                        
+       
+                    <p:messages autoUpdate="false" />
+                    
+                     <h:panelGroup>            
+     
+        <p:panelGrid id="capaPanel" columns="4" layout="grid" 
+					style="margin-top: 20px; margin-bottom: 40px"
+					styleClass="panelgrid-noborder"
+					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
+        
+        <h:outputText value="Pressão Arterial: " class="ui-panelgrid" />
+        <p:keyboard id="default" />
+        
+        <h:outputText value="PAM: "  class="ui-panelgrid"/>
+        <p:keyboard id="buttonmodePAM"  showMode="button"  keypadOnly="true" />
+        
+        <h:outputText value="Frequencia Respiratória: " class="ui-panelgrid" />
+        <p:keyboard id="buttonmodeRespriratoria"  showMode="button"  keypadOnly="true" />
+        
+             <h:outputText value="Frequencia Cardiaca: " class="ui-panelgrid" />
+        <p:keyboard id="buttonmodeCardiaca"  showMode="button"  keypadOnly="true" />
+        
+              <h:outputText value="Temperatura: " class="ui-panelgrid"/>
+        <p:keyboard id="buttonmodeTemperatura"  showMode="button"  keypadOnly="true" />
+        
+              <h:outputText value="SPO²: " class="ui-panelgrid" />
+        <p:keyboard id="buttonmodeSPO"  showMode="button"  keypadOnly="true" />
+        
+              <h:outputText value="HGT: " class="ui-panelgrid" />
+        <p:keyboard id="buttonmodeHGT"  showMode="button"  keypadOnly="true" />
+        
+              <h:outputText value="PIA: " class="ui-panelgrid" />
+        <p:keyboard id="buttonmodePia"  showMode="button"  keypadOnly="true" />
+        
+        <h:outputText value="PVC: "  class="ui-panelgrid"/>
+        <p:keyboard id="buttonmodePvc"  showMode="button"  keypadOnly="true" />
+        
+    </p:panelGrid>
+                                    
+                 </h:panelGroup>
+      
+                    <p:toolbar>
+				<p:toolbarGroup>
+					<p:commandButton value="Salvar Dinamica" action="#{cadastroOrcamentoBean.salvar}"
+                                                         process="@this capaPanel" update="@form"  styleClass="ui-panelgrid"/>
+                                        <p:commandButton value="Proximo" action="Ganhos.xhtml?faces-redirect=true"  ajax="false" class="ui-panelgrid" />
+                                        
+				</p:toolbarGroup>
+			</p:toolbar>
+			
+                
+                </h:form>	
+                                                           
+                             
+                           
+						
+					
+		
+			
+		               
+                
+	</ui:define>
+	
+</ui:composition>
