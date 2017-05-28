@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui">
+<html>
+    
+<style>
+ body{
+        
+     background-color: #B0C4DE;  
+ }
+form {
+    border: 3px solid #f1f1f1;
+}
+
+input[type=text], input[type=password] {
+    width: 25%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.logar{
+    
+    padding-left: 2%;
+    
+}
+.cancela{
+    
+    padding-left: 30%;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 15%;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+h2{
+    font-family:  Arial,Helvetica, sans-serif; 
+    text-align: center;
+    color:  #000000;
+    padding: 10px 5px;
+}
+
+img.avatar {
+    width: 5%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 18px;
+    margin: 20px 10px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 10%;
+    }
+    
+    .entrada{
+        margin: 10px 10px;
+}
+
+</style>
+   
+    <body>
+
+     <h2>Login de Cadastro</h2>
+
+    <form action="Hemodinamica.xhtml?faces-redirect=true">
+    <center>
+  <div class="imgcontainer">
+    <img src="resources/algaworks/images/Capturarando.JPG" alt="Avatar" class="avatar"/>
+  </div>
+
+  <div class="container">
+    <label><b>Nome</b></label>
+    <input class="entrada" type="text" placeholder="Nome" name="uname" required="true"/>
+    <p></p>
+
+    <label><b>Senha</b></label>
+    <input type="password" placeholder="Enter Senha" name="psw" required="true"/>
+        <p></p>
+        <div class="logar">
+    <button type="submit">Login</button>
+    
+    <input type="checkbox" checked="checked"/> Lembre-me
+       </div>
+  </div>
+  </center>  
+  <div class="container" style="background-color:#f1f1f1">
+      <button type="button" class="cancelbtn">Cancelar</button>
+     <span class="psw">Esqueceu <a href="#">Senha?</a></span>
+   
+  </div>
+        
+</form>
+
+</body>
+</html>
+</ui:composition>
