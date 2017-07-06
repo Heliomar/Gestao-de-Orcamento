@@ -19,7 +19,7 @@
 			<p:messages autoUpdate="false" />
 			
 			<div class="ui-fluid">
-				<p:panelGrid id="capaPanel" columns="4" layout="grid" 
+                            <p:panelGrid id="capaPanel" columns="4" class="grid" 
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
@@ -55,7 +55,6 @@
 					
 			<p:dataTable id="itensTable" value="#{cadastroOrcamentoBean.orcamento.itens}" var="item"
 				emptyMessage="Nenhum item adicionado."
-				reflow="true"
 				style="margin-top: 10px">
 				
 				<p:column headerText="Descrição">
@@ -75,12 +74,12 @@
 			</p:dataTable>
 			
 			<p:dialog widgetVar="itemDialog" header="Novo Ganho/ML"
-				resizable="false" style="min-width: 300px" responsive="true">
+				resizable="false" style= "min-width: 300px">
 				
 				<h:panelGroup id="itemPanel" layout="block" styleClass="ui-fluid">
 					<p:messages id="msgDialog" autoUpdate="false" />
 					
-					<p:panelGrid columns="2" layout="grid" styleClass="panelgrid-noborder"
+					<p:panelGrid columns="2" id="grid" styleClass="panelgrid-noborder"
 						columnClasses="ui-grid-col-4, ui-grid-col-8">
 					
 						<p:outputLabel value="Descrição" for="descricao" />
@@ -101,7 +100,7 @@
 						
 						<p:outputLabel/>
 						<p:commandButton value="Adicionar"
-							action="#{cadastroOrcamentoBean.adicionarItem}"
+                                                                 action="#{cadastroOrcamentoBean.adicionarItem}"
 							process="itemPanel" update="itemPanel itensTable"
 							oncomplete="if (!args.validationFailed) PF('itemDialog').hide()" />
 					

@@ -5,10 +5,13 @@
  */
 package com.algaworks.comercial.model.Dao;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -17,8 +20,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @author Helio
  */
 
-@ViewScoped
-@ManagedBean
+
 @Entity
 @Table(name="Perda")
 public class Perda{
@@ -37,13 +39,19 @@ public class Perda{
     @Column(name="hemodialise")
     private String Hemodialise;
 
-     Perda(String diurese, String sondaNaso, String dreno, String hemodialise){
+    /* Perda(String diurese, String sondaNaso, String dreno, String hemodialise){
     
          this.Diurese = diurese;
          this.Dreno = dreno;
          this.Hemodialise = hemodialise;
          this.SondaNaso = sondaNaso;
         }
+    */
+    
+     @OneToMany(mappedBy = "Perda", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<PerdaItem> itens = new ArrayList<>();
+
+    
     /**
      * @return the Diurese
      */
@@ -99,5 +107,24 @@ public class Perda{
     public void setHemodialise(String Hemodialise) {
         this.Hemodialise = Hemodialise;
     }
-    
+
+    /**
+     * @return the itens
+     */
+    public List<PerdaItem> getItens() {
+        return itens;
+    }
+
+    /**
+     * @param itens the itens to set
+     */
+    public void setItens(List<PerdaItem> itens) {
+        this.itens = itens;
+    }
+   
+    private static class PerdaItem {
+
+        public PerdaItem() {
+        }
+    }
 }

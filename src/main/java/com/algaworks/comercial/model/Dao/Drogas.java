@@ -34,14 +34,14 @@ public class Drogas {
     
     @NotEmpty
     @Enumerated(EnumType.STRING)
-    private DrogaTipo drogas;
+    private TipoItem drogas;
     
     @NotEmpty
     @Column(name="nomeDroga")
     private String NomeDroga; 
     
     @OneToMany(mappedBy = "drogas", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<DrogaTipo> TipoItemDroga = new ArrayList();
+    private List<TipoItem> TipoItemDroga = new ArrayList();
 
     /**
      * @return the Volume
@@ -60,14 +60,14 @@ public class Drogas {
     /**
      * @return the drogas
      */
-    public DrogaTipo getDrogas() {
+    public TipoItem getDrogas() {
         return drogas;
     }
 
     /**
      * @param drogas the drogas to set
      */
-    public void setDrogas(DrogaTipo drogas) {
+    public void setDrogas(TipoItem drogas) {
         this.drogas = drogas;
     }
 
@@ -88,14 +88,14 @@ public class Drogas {
     /**
      * @return the TipoItemDroga
      */
-    public List<DrogaTipo> getTipoItemDroga() {
+    public List<TipoItem> getTipoItemDroga() {
         return TipoItemDroga;
     }
 
     /**
      * @param TipoItemDroga the TipoItemDroga to set
      */
-    public void setTipoItemDroga(List<DrogaTipo> TipoItemDroga) {
+    public void setTipoItemDroga(List<TipoItem> TipoItemDroga) {
         this.TipoItemDroga = TipoItemDroga;
     }
 

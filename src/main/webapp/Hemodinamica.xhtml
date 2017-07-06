@@ -9,16 +9,18 @@
 		<h1 class="aw-page-title">Hemodinâmica do Paciente</h1>
                 
                 <p:messages autoUpdate="false" />
-			
+               
                 <h:form>
-				<p:panelGrid id="capaPanel" columns="4" layout="grid" 
-					style="margin-top: 20px; margin-bottom: 40px"
-					styleClass="panelgrid-noborder"
+                    
+                    
+                    <p:panelGrid id="capaPanel" columns="4" 
+					style="margin-top: 30px; margin-bottom: 40px"
+                                        styleClass="panelgrid-noborder" 
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
                 
                 
                                     <p:outputLabel value="Nome do Paciente" for="nome" class="ui-panelgrid"/>
-                    <p:inputText id="nome" required="true" placeholder="nome" maxlength="25" />
+                                    <p:inputText id="nome" required="true" placeholder="nome" maxlength="25" value="" />
                     
                     <p:outputLabel value="Atendimento" for="atendimento" class="ui-panelgrid"/>
                     <p:inputMask mask="999999" id="atendimento" required="true" placeholder="atendimento" maxlength="7" />
@@ -27,11 +29,11 @@
                     <p:inputMask mask="999" id="leito" required="true" placeholder="leito" maxlength="3" />
                     
                               </p:panelGrid>
-                </h:form> 
+                                    </h:form> 
                 
                 <h:form id="form">
-                    <p:panelGrid id="capaPanel" columns="4" layout="grid" 
-					style="margin-top: 20px; margin-bottom: 40px"
+                    <p:panelGrid id="capaPanel" columns="4" class="grid" 
+                                 style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
                         
@@ -58,7 +60,7 @@
 			<p:messages autoUpdate="false" />
 			
 			<div class="ui-fluid">
-				<p:panelGrid id="capaPanel" columns="4" layout="grid" 
+                            <p:panelGrid id="capaPanel" columns="3" class="grid"
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
@@ -78,16 +80,16 @@
                     
                      <h:panelGroup>            
      
-        <p:panelGrid id="capaPanel" columns="4" layout="grid" 
+                         <p:panelGrid id="capaPanel" columns="4" class="grid"
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
         
-        <h:outputText value="Pressão Arterial: " class="ui-panelgrid" />
-        <p:keyboard id="default" />
+                             <h:outputText id="PressaoA" value="Pressão Arterial: " class="ui-panelgrid"/>
+                             <p:keyboard id="default" value="" />
         
         <h:outputText value="PAM: "  class="ui-panelgrid"/>
-        <p:keyboard id="buttonmodePAM"  showMode="button"  keypadOnly="true" />
+        <p:keyboard id="buttonmodePAM"  showMode="button"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean}"/>
         
         <h:outputText value="Frequencia Respiratória: " class="ui-panelgrid" />
         <p:keyboard id="buttonmodeRespriratoria"  showMode="button"  keypadOnly="true" />
@@ -128,7 +130,7 @@
                                                            
                              
                            
-						
+             				
 					
 		
 			

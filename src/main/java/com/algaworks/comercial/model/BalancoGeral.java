@@ -5,7 +5,7 @@
  */
 package com.algaworks.comercial.model;
 
-import com.algaworks.comercial.model.Dao.DrogaTipo;
+import com.algaworks.comercial.model.Dao.TipoItem;
 import com.algaworks.comercial.model.Dao.Drogas;
 import com.algaworks.comercial.model.Dao.Ganho;
 import com.algaworks.comercial.model.Dao.Perda;
@@ -84,7 +84,7 @@ public class BalancoGeral implements Serializable {
     
     public ArrayList<Drogas> AdicionarDrogas(Drogas  droga){
     
-       droga.setDrogas(DrogaTipo.Venosa);
+       droga.setDrogas(TipoItem.Venosa);
        droga.setDescricao("descricao");
        droga.setVolume("volume");
        droga.setNomeDdroga("NomeDroga");

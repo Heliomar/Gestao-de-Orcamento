@@ -11,6 +11,9 @@ package com.algaworks.comercial.model.Dto;
  */
 public class TipoItemDroga {
     
+    private String descricao;
+    private String nome;
+    private String volume;
     
     
 	

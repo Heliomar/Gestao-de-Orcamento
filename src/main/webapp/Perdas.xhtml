@@ -10,14 +10,14 @@
                 
                <p:messages autoUpdate="false" />
 		<h:form>
-				<p:panelGrid id="capaPanel" columns="4" layout="grid" 
+				<p:panelGrid id="capaPanel" columns="4" class="grid" 
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
                 
                 
                                     <p:outputLabel value="Nome do Paciente" for="nome" class="ui-panelgrid"/>
-                    <p:inputText id="nome" required="true" placeholder="nome" maxlength="25" />
+                                    <p:inputText id="nome" required="true" placeholder="nome" maxlength="25" />
                     
                     <p:outputLabel value="Atendimento" for="atendimento" class="ui-panelgrid"/>
                     <p:inputMask mask="999999" id="atendimento" required="true" placeholder="atendimento" maxlength="7" />
@@ -29,7 +29,7 @@
                 </h:form> 
                 
                 <h:form id="form">
-                    <p:panelGrid id="capaPanel" columns="4" layout="grid" 
+                    <p:panelGrid id="capaPanel" columns="4" class="grid" 
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
@@ -57,7 +57,7 @@
 			<p:messages autoUpdate="false" />
 			
 			<div class="ui-fluid">
-				<p:panelGrid id="capaPanel" columns="4" layout="grid" 
+				<p:panelGrid id="capaPanel" columns="4" class="grid" 
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
@@ -77,22 +77,22 @@
                     
                      <h:panelGroup>            
      
-        <p:panelGrid id="capaPanel" columns="4" layout="grid" 
+        <p:panelGrid id="capaPanel" columns="4" class="grid" 
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
         
-        <h:outputText value="Diurese: " class="ui-panelgrid" />
-        <p:keyboard id="default" />
+            <h:outputText id="Diurese" value="Diurese: " class="ui-panelgrid" />
+            <p:keyboard id="default" value="#{gestaoDePerdasBean.perda.diurese}"/>
         
         <h:outputText value="Sonda Nasogastrica: "  class="ui-panelgrid"/>
-        <p:keyboard id="buttonmodeSNG"  showMode="button"  keypadOnly="true" />
+        <p:keyboard id="buttonmodeSNG"  showMode="button"  keypadOnly="true" value="#{gestaoDePerdasBean.perda.sondaNaso}"/>
         
         <h:outputText value="Dreno: " class="ui-panelgrid" />
-        <p:keyboard id="buttonmodedreno"  showMode="button"  keypadOnly="true" />
+        <p:keyboard id="buttonmodedreno"  showMode="button"  keypadOnly="true" value="#{gestaoDePerdasBean.perda.dreno}"/>
         
              <h:outputText value="Hemodialise: " class="ui-panelgrid" />
-        <p:keyboard id="buttonmodeCardiaca"  showMode="button"  keypadOnly="true" />
+             <p:keyboard id="buttonmodeCardiaca"  showMode="button"  keypadOnly="true" value="#{gestaoDePerdasBean.perda.hemodialise}"/>
         
        
        

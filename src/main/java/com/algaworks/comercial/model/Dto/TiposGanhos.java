@@ -14,32 +14,44 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.text.Text;
 import javax.swing.JOptionPane;
 
 
 /**
  *
- * @author Helio
+ * @author Helioarrays em java 
  */
 public class TiposGanhos {
     
     private ArrayList<Ganho> ganhar = new ArrayList<Ganho>();
-   
-    
+
+ 
     
     public void SelecionarGanho(ArrayList<Ganho> ganhar){
         
-        
-        
-        
+                  
      try{
      
          for(Iterator <Ganho> iterator = ganhar.iterator(); iterator.hasNext();){
           
+            
+            
+            Ganho soro = iterator.next();
+            Ganho medicacao = iterator.next();
+            Ganho volume = iterator.next();
+            Ganho hemocomponente = iterator.next();
+            
+            hemocomponente.getHemocomponente();
+            volume.getVolume();
+            medicacao.getMedicação();
+            soro.getSoro();
+            
+            System.out.println("selecionado para exibição n% :\n"+ganhar.iterator());
           //ganhar.get() = (Ganho) Iterator.next();
           
           //JOptionPane.showMessageDialog(null,"",+ganhar.getVolume()+);
-         // ganhar.getHemocomponente();
+           
          // ganhar.getMedicação();
          // ganhar.getSoro();
          // ganhar.getVolume();
@@ -55,6 +67,8 @@ public class TiposGanhos {
     
     public void MostrarArray(ArrayList<Ganho> ganhar){
            ganhar.addAll(ganhar);
+           
+           System.out.println(" informe suas informações\n"+ganhar);
     }
     
 }

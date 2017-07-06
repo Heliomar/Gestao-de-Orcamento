@@ -16,7 +16,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @ViewScoped
 @ManagedBean
-public enum DrogaTipo {
+public enum TipoItem {
     
          Oral("Hipossodica"),
 	 Venosa("Subcutanea");
@@ -24,7 +24,7 @@ public enum DrogaTipo {
          @NotEmpty
 	private String descricao;
 
-	DrogaTipo(String descricao) {
+	TipoItem(String descricao) {
 		this.descricao = descricao;
 	}
 	

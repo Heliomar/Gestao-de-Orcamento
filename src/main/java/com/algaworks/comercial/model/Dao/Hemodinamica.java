@@ -5,16 +5,14 @@
  */
 package com.algaworks.comercial.model.Dao;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotEmpty;
 
 
-@ViewScoped
-@ManagedBean
+
 @Entity
 @Table(name = "Hemodinamica")
 public class Hemodinamica{
