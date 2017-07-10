@@ -5,7 +5,8 @@
  */
 package com.algaworks.comercial.repository;
 
-import com.algaworks.comercial.model.Dao.Perda;
+
+import com.algaworks.comercial.model.Dao.Drogas;
 import java.io.Serializable;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -14,15 +15,14 @@ import javax.persistence.EntityManager;
  *
  * @author Helio
  */
-public class PerdaRepositary implements Serializable {
+public class DrogasRepository implements Serializable {
     
-    
-    private static final long serialVersionUID = 1L;
+     private static final long serialVersionUID = 1L;
 
 	@Inject
 	private EntityManager manager;
 	
-	public Perda guardarPerda(Perda perda) {
-		return manager.merge(perda);
+	public Drogas guardarDrogas(Drogas drogas) {
+		return manager.merge(drogas);
 	}
 }

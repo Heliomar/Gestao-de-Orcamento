@@ -6,7 +6,6 @@
 package com.algaworks.comercial.repository;
 
 import com.algaworks.comercial.model.Dao.Hemodinamica;
-import com.algaworks.comercial.model.Dao.Perda;
 import java.io.Serializable;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -22,7 +21,7 @@ public class HemodinamicasRepository implements Serializable{
 	@Inject
 	private EntityManager manager;
 	
-	public Hemodinamica guardar(Hemodinamica hemodinamica) {
+	public Hemodinamica guardarHemodinamica(Hemodinamica hemodinamica) {
 		return manager.merge(hemodinamica);
 	}
     

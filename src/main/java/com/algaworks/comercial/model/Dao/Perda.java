@@ -8,6 +8,7 @@ package com.algaworks.comercial.model.Dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.bean.ManagedBean;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @author Helio
  */
 
-
+@ManagedBean
 @Entity
 @Table(name="Perda")
 public class Perda{

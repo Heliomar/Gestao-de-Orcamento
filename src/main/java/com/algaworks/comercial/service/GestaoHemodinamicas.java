@@ -26,7 +26,7 @@ public class GestaoHemodinamicas implements Serializable {
 	
 	@Transacional
 	public void salvar(Hemodinamica hemodinamica) {
-		hemodinamicas.guardar(hemodinamica);
+		hemodinamicas.guardarHemodinamica(hemodinamica);
 	}
     
 }

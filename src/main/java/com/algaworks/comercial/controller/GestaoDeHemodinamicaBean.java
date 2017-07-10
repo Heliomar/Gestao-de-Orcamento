@@ -16,6 +16,7 @@ import javax.inject.Named;
  *
  * @author Helio
  */
+
 @Named
 @ViewScoped
 public class GestaoDeHemodinamicaBean implements Serializable {
@@ -24,8 +25,38 @@ public class GestaoDeHemodinamicaBean implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Inject
-    private GestaoHemodinamicas gestaohemodinamicas;
+    private GestaoHemodinamicas gestaoHemodinamicas;
 
-  private Hemodinamica hemodinamica = new Hemodinamica();
+    
+    
+    private Hemodinamica hemodinamica = new Hemodinamica();
+    
+    
+    //private HemodinamicaItem item;
+   
+   public void salvarHemodinamica()
+   {
+   
+       hemodinamica.getPressaoAMedia();
+       hemodinamica.getFrequencia();
+       hemodinamica.getFrequenciaCardio();
+       hemodinamica.getHemoGT();
+       hemodinamica.getPia();
+       hemodinamica.getPressaoA();
+       hemodinamica.getPvc();
+       hemodinamica.getSaturacao();
+       hemodinamica.getTemperatura();
+       
+       gestaoHemodinamicas.salvar(hemodinamica);
+       hemodinamica = new Hemodinamica();
+      // itens = hemodinamica.getFrequencia();
+   
+   }
+   
+   public Hemodinamica getHemodinamica()
+   {
+   
+       return hemodinamica;
+   }
     
 }

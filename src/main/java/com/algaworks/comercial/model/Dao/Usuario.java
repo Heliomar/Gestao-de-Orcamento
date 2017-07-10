@@ -10,6 +10,8 @@ import java.util.Date;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -20,21 +22,11 @@ import org.hibernate.validator.constraints.NotEmpty;
  *
  * @author Helio
  */
-
 @ViewScoped
-@ManagedBean
-public class Usuario implements Serializable{
+@Entity
+@Table(name="Usuario")
+public class Usuario{
     
-    
-    public Usuario(String NomePaciente,String Atendimento,Date data, String NomeMedico, int Leito){
-        
-       String nomePaciente = this.NomePaciente;
-       String atendimento = this.Atendimento;
-       Date Dia = this.data;
-       String nomeMedico =this.NomeMedico;
-    
-    
-    }
     
     @NotEmpty
     @Column(name="NomePaciente")

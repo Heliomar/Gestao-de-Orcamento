@@ -4,10 +4,9 @@
  * and open the template in the editor.
  */
 package com.algaworks.comercial.model.Dao;
-
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -17,7 +16,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 
 @ViewScoped
-@ManagedBean
+@Entity
 @Table(name="Login")
 public class Login {
     
@@ -27,7 +26,7 @@ public class Login {
     
     @NotEmpty
     @Column(name="nome")
-    private String nome;
+    private String nomeLogado;
     
     @NotEmpty
     @Column(name="Senha")
@@ -51,14 +50,14 @@ public class Login {
      * @return the nome
      */
     public String getNome() {
-        return nome;
+        return nomeLogado;
     }
 
     /**
      * @param nome the nome to set
      */
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nomeLogado = nome;
     }
 
     /**

@@ -5,20 +5,25 @@
  */
 package com.algaworks.comercial.model.Dao;
 
+import com.algaworks.comercial.model.Dto.TiposGanhos;
 import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.inject.Named;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.OneToMany;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
  * @author Helio
  */
-
+@Named
 @ViewScoped
 @ManagedBean
-public class Ganho  {
+public class Ganho{
     
     @NotEmpty
     @Column(name="soro")
@@ -34,6 +39,8 @@ public class Ganho  {
     @Column(name="hemocomponente")
     private String Hemocomponente;
     
+    @OneToMany(mappedBy = "ganhos", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TiposGanhos> Itens = new ArrayList();
     
     Ganho(String soro,int volume, String medicacao, String hemocomponente )
     {
@@ -102,6 +109,20 @@ public class Ganho  {
      */
     public void setHemocomponente(String Hemocomponente) {
         this.Hemocomponente = Hemocomponente;
+    }
+
+    /**
+     * @return the Itens
+     */
+    public List<TiposGanhos> getItens() {
+        return Itens;
+    }
+
+    /**
+     * @param Itens the Itens to set
+     */
+    public void setItens(List<TiposGanhos> Itens) {
+        this.Itens = Itens;
     }
     
 }

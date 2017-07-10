@@ -10,20 +10,20 @@
                 
                
                 <h:form id="frm1">
-				<p:panelGrid id="capaPanel" columns="4" layout="grid" 
+				<p:panelGrid id="capaPanel" columns="4" class="grid" 
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
                 
                 
                                     <p:outputLabel value="Nome do Paciente" for="nome" class="ui-panelgrid"/>
-                    <p:inputText id="nome" required="true" placeholder="nome" maxlength="25" />
+                                    <p:inputText id="nome" required="true" placeholder="nome" maxlength="25" value="#{gestaoDeUsuarioBean.usuario.setNomeMedico(NomeMedico)}" />
                     
-                    <p:outputLabel value="Atendimento" for="atendimento" class="ui-panelgrid"/>
-                    <p:inputMask mask="999999" id="atendimento" required="true" placeholder="atendimento" maxlength="7" />
+                                    <p:outputLabel value="Atendimento" for="atendimento" class="ui-panelgrid" id="atendimento"/>
+                                    <p:inputMask mask="999999" id="atendimento" required="true" placeholder="atendimento" maxlength="7" value="#{gestaoDeUsuarioBean.usuario.setAtendimento(Atendimento)}" />
                     
-                    <p:outputLabel value="Leito do Paciente" for="leito" class="ui-panelgrid"/>
-                    <p:inputMask mask="999" id="leito" required="true" placeholder="leito" maxlength="3" />
+                                    <p:outputLabel value="Leito do Paciente" for="leito" class="ui-panelgrid" id="leito"/>
+                                    <p:inputMask mask="999" id="leito" required="true" placeholder="leito" maxlength="3" value="#{gestaoDeUsuarioBean.usuario.setLeito(Leito)}" />
                     
                               </p:panelGrid>
                 </h:form> 
@@ -31,17 +31,17 @@
                     
                 
                 <h:form id="form">
-                    <p:panelGrid id="capaPanel" columns="4" layout="grid" 
+                    <p:panelGrid id="capaPanel" columns="4" class="grid" 
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
                         
-                       <p:outputLabel value="Medico Plantonista" for="nomeMedico" class="ui-panelgrid" />
-                    <p:inputText id="nomeMedico" required="true" placeholder="Medico Plantonista" maxlength="32" />
+                        <p:outputLabel value="Medico Plantonista" for="nomeMedico" class="ui-panelgrid"  id="nomeMedico"/>
+                        <p:inputText id="nomeMedico" required="true" placeholder="Medico Plantonista" maxlength="32" value="#{gestaoDeUsuarioBean.usuario.setNomeMedico(NomeMedico)}" />
                     
                         
-                        <p:outputLabel for="datetime" value="Data/Hora :" class="ui-panelgrid"/>
-                          <p:calendar id="datetime" value="#{calendarView.date10}" pattern="MM/dd/yyyy HH:mm:ss" required="true"/>
+                        <p:outputLabel for="datetime" value="Data/Hora :" class="ui-panelgrid" id="datetime"/>
+                        <p:calendar id="datetime" value="#{gestaoDeUsuarioBean.usuario.setData(data)}" pattern="MM/dd/yyyy HH:mm:ss" required="true"/>
  
         
                     </p:panelGrid>
@@ -59,7 +59,7 @@
 			
 			
 			<div class="ui-fluid">
-				<p:panelGrid id="capaPanel" columns="4" layout="grid" 
+				<p:panelGrid id="capaPanel" columns="4" class="grid" 
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
@@ -75,7 +75,7 @@
                     <h:panelGroup class="ui-panelgrid" styleClass="panelgrid-noborder">  
                          
                          
-        <p:panelGrid id="capaPanel" columns="4" layout="grid" 
+        <p:panelGrid id="capaPanel" columns="4" class="grid" 
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
@@ -83,7 +83,7 @@
              <p:outputLabel value="Tipo da Droga" for="tipo" />
 						<p:selectOneMenu id="tipo" >
 							<f:selectItem itemLabel="Selecione" />
-							<f:selectItem itemLabel="Adrenaalina/2ML" itemValue="PRODUTO" />
+							<f:selectItem itemLabel="Adrenalina/2ML" itemValue="PRODUTO" />
                                                         <f:selectItem itemLabel="Amiodarona/30ML" itemValue="PRODUTO" />
 							<f:selectItem itemLabel="Amiodarona/15MG" itemValue="SERVICO" />
                                                         <f:selectItem itemLabel="Furosemida/2ML" itemValue="SERVICO" />
@@ -110,13 +110,13 @@
                 <h:form id="frm4">
                      <h:panelGroup>            
      
-        <p:panelGrid id="capaPanel" columns="4" layout="grid" 
+        <p:panelGrid id="capaPanel" columns="4" class="grid" 
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
         
-        <h:outputText value="Volume " class="ui-panelgrid" />
-        <p:keyboard id="volume"  showMode="button"  keypadOnly="true" required="true" />
+            <h:outputText value="Volume " class="ui-panelgrid"  id="volume"/>
+            <p:keyboard id="volume"  showMode="button"  keypadOnly="true" required="true" value="#{gestaoDeDrogasBean.drogas.volume}"/>
         
         <p:outputLabel value="Tipo do Soro" for="tipo" />
 						<p:selectOneMenu id="tipo" >
@@ -138,7 +138,7 @@
                     
                     <p:toolbar>
 				<p:toolbarGroup>
-					<p:commandButton value="Salvar Drogas" action="#{cadastroOrcamentoBean.salvar}"
+                                    <p:commandButton value="Salvar Drogas" action="#{gestaoDeDrogasBean.salvarDrogas}"
                                                          process="@this capaPanel" update="@form" />
                                         <p:commandButton value="Proximo" action="Perdas.xhtml?faces-redirect=true" ajax="false"/>
                                         

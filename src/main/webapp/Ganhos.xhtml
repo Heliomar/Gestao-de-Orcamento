@@ -25,21 +25,21 @@
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
 				
 					<p:outputLabel value="Nome do Paciente" for="cliente" />
-                                        <p:inputText id="cliente" placeholder="Nome do Paciente" value="#{cadastroOrcamentoBean.orcamento.cliente}" />
+                                        <p:inputText id="cliente" placeholder="Nome do Paciente" value="#{gestaoDeUsuarioBean.usuario.nomePaciente}" />
 					
-					<p:outputLabel value="Atendimento" for="cpf" />
-                                        <p:inputMask id="cpf" placeholder="Atendimento" mask="999.999.999-99" value="#{cadastroOrcamentoBean.orcamento.cpf}" />
+					<p:outputLabel value="Atendimento" for="atendimento" />
+                                        <p:inputMask id="atendimento" placeholder="Atendimento" maxlength="999" mask="999" value="#{gestaoDeUsuarioBean.usuario.atendimento}" />
 					
-					<p:outputLabel value="Leito" for="telefone" />
-                                        <p:inputText id="telefone" placeholder="Leito" value="#{cadastroOrcamentoBean.orcamento.telefone}" />
+					<p:outputLabel value="Leito" for="tleito"/>
+                                        <p:inputText id="telefone" placeholder="Leito" value="#{gestaoDeUsuarioBean.usuario.leito}" />
                                         
                                         <p:outputLabel value="Nome do Médico" />
-                                        <p:inputText  placeholder="Nome do Médico" value="#{cadastroOrcamentoBean.orcamento.cliente}" />
+                                        <p:inputText  placeholder="Nome do Médico" value="#{gestaoDeUsuarioBean.usuario.nomeMedico}" />
 					
 					
 					
                                          <p:outputLabel for="datetime" value="Data/Hora :" class="ui-panelgrid"/>
-                                         <p:calendar id="datetime"  placeholder="Data/Horas"  pattern="MM/dd/yyyy HH:mm:ss" required="true"/>
+                                         <p:calendar id="datetime"  placeholder="Data/Horas"  pattern="MM/dd/yyyy HH:mm:ss" required="true" value="#{gestaoDeUsuarioBean.usuario.data}"/>
  
 					
 				</p:panelGrid>

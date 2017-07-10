@@ -5,9 +5,9 @@
  */
 package com.algaworks.comercial.service;
 
-import com.algaworks.comercial.model.Dao.Perda;
-import com.algaworks.comercial.repository.PerdaRepositary;
-
+import com.algaworks.comercial.model.Dao.Usuario;
+import com.algaworks.comercial.repository.DrogasRepository;
+import com.algaworks.comercial.repository.UsuarioRepository;
 import com.algaworks.comercial.util.Transacional;
 import java.io.Serializable;
 import javax.inject.Inject;
@@ -16,16 +16,19 @@ import javax.inject.Inject;
  *
  * @author Helio
  */
-public class GestaoPerdas implements Serializable{
+public class GestaoUsuario implements Serializable {
     
     private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private PerdaRepositary Perdas;
+	private UsuarioRepository usuario;
+        
+        
 	
 	@Transacional
-	public void salvar(Perda perda) {
-		Perdas.guardarPerda(perda);
+	public void salvar(Usuario usuarios) {
+		usuario.guardarUsuario(usuarios);
 	}
     
+        
 }
