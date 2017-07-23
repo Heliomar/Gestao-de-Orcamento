@@ -10,6 +10,7 @@ import com.algaworks.comercial.model.Dao.Usuario;
 import com.algaworks.comercial.service.GestaoUsuario;
 import java.io.Serializable;
 import java.util.Date;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -31,7 +32,11 @@ public class GestaoDeUsuarioBean implements Serializable {
     @Inject
     private GestaoUsuario gestaoUsuario;
     
-    private Usuario usuario = new Usuario();
+    @PostConstruct
+    public void Init(){
+    usuario = new Usuario();
+    }
+    private Usuario usuario;
     
     
     public Usuario getUsuario()

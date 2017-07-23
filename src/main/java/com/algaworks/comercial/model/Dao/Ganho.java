@@ -6,6 +6,7 @@
 package com.algaworks.comercial.model.Dao;
 
 import com.algaworks.comercial.model.Dto.TiposGanhos;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -25,20 +26,24 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name ="ganho")
-public class Ganho{
+public class Ganho implements Serializable{
       
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+     @Column(name="Id_ganho")
     private Long id;
     
     @NotEmpty
+     @Column(name="soro")
     private String Soro;
     
     @NotEmpty
+     @Column(name="volume")
     private String Volume;
     
     @NotEmpty
+    @Column(name="medicacao")
     private String Medicacao;
     
     @NotEmpty

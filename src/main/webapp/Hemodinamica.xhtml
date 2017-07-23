@@ -52,7 +52,7 @@
 		<h:form id="frm">
                     <p:toolbar>
                         <p:toolbarGroup >
-                            <p:commandButton class="divisorias" value="Salvar Usuario" action="#{gestaoDeUsuarioBean.salvarUsuario}"
+                            <p:commandButton class="divisorias" value="Salvar Usuario" action="#{gestaoDeLoginBean.SalvarLogin(login)}"
                                                          process="@this capaPanel" update="@form"  styleClass="ui-panelgrid"/>
                                         <p:commandButton value="Proximo" action="Ganhos.xhtml?faces-redirect=true"  ajax="false" class="ui-panelgrid" />	                                    
 				</p:toolbarGroup>
@@ -87,32 +87,32 @@
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
         
-                             <h:outputText id="pressaoA" value="PressaoA" class="ui-panelgrid"/>
-                             <p:keyboard id="default" value="#{gestaoDeHemodinamicaBean.hemodinamica.pressaoA}" required="true"/>
+                             <h:outputText value="PressaoA" class="ui-panelgrid"/>
+                             <p:keyboard id="buttonmPressaoA" placeholder="Pressao Arterial" showMode="button"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.pressaoA}" maxlength="3"/>
         
         <h:outputText value="PAM: "  class="ui-panelgrid"/>
-        <p:keyboard id="buttonmodePAM"  showMode="button"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.pressaoAMedia}"/>
+        <p:keyboard id="buttonmodePAM"  showMode="button" maxlength="2"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.pressaoAMedia}"/>
         
         <h:outputText value="Frequencia Respiratória: " class="ui-panelgrid" />
-        <p:keyboard id="buttonmodeRespriratoria"  showMode="button"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.frequencia}"/>
+        <p:keyboard id="buttonmodeRespriratoria"  maxlength="3" showMode="button"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.frequencia}"/>
         
              <h:outputText value="Frequencia Cardiaca: " class="ui-panelgrid" />
-             <p:keyboard id="buttonmodeCardiaca"  showMode="button"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.frequenciaCardio}"/>
+             <p:keyboard id="buttonmodeCardiaca"  maxlength="2" showMode="button"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.frequenciaCardio}"/>
         
               <h:outputText value="Temperatura: " class="ui-panelgrid"/>
-              <p:keyboard id="buttonmodeTemperatura"  showMode="button"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.temperatura}" />
+              <p:keyboard id="buttonmodeTemperatura"  maxlength="2" showMode="button"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.temperatura}" />
         
               <h:outputText value="SPO²: " class="ui-panelgrid" />
-              <p:keyboard id="buttonmodeSPO"  showMode="button"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.saturacao}" />
+              <p:keyboard id="buttonmodeSPO"  maxlength="3" showMode="button"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.saturacao}" />
         
               <h:outputText value="HGT: " class="ui-panelgrid" />
-              <p:keyboard id="buttonmodeHGT"  showMode="button"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.hemoGT}" />
+              <p:keyboard id="buttonmodeHGT"  maxlength="3" showMode="button"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.hemoGT}" />
         
               <h:outputText value="PIA: " class="ui-panelgrid" />
-              <p:keyboard id="buttonmodePia"  showMode="button"  keypadOnly="true"  value="#{gestaoDeHemodinamicaBean.hemodinamica.pia}"/>
+              <p:keyboard id="buttonmodePia"  maxlength="2" showMode="button"  keypadOnly="true"  value="#{gestaoDeHemodinamicaBean.hemodinamica.pia}"/>
         
         <h:outputText value="PVC: "  class="ui-panelgrid"/>
-        <p:keyboard id="buttonmodePvc"  showMode="button"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.pvc}"/>
+        <p:keyboard id="buttonmodePvc"  maxlength="3" showMode="button"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.pvc}"/>
         
     </p:panelGrid>
                                     
@@ -120,7 +120,7 @@
       
                     <p:toolbar>
 				<p:toolbarGroup>
-                                    <p:commandButton id="salvaHemodinamica" class="divisorias" value="Salvar Dinamica" action="#{gestaoDeHemodinamicaBean.salvarHemodinamica()}"
+                                    <p:commandButton id="salvaHemodinamica" class="divisorias" value="Salvar Dinamica" action="#{gestaoDeHemodinamicaBean.salvarHemodinamica(hemodinamica)}"
                                                          process="@this capaPanel" update="@form"  styleClass="ui-panelgrid"/>
                                         <p:commandButton value="Proximo" action="Ganhos.xhtml?faces-redirect=true"  ajax="false" class="ui-panelgrid" />
                                         

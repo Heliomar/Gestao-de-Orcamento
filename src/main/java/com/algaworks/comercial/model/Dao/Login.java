@@ -4,11 +4,13 @@
  * and open the template in the editor.
  */
 package com.algaworks.comercial.model.Dao;
+import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -17,17 +19,18 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @author Helio
  */
 @Named
-@ManagedBean
-@ViewScoped
+//@ManagedBean
+//@ViewScoped
 @Entity
 @Table(name="Login")
-public class Login {
+public class Login implements Serializable {
     
     
     @NotEmpty
     @Column(name="nome")
     private String nome;
     
+    @Id
     @NotEmpty
     @Column(name="Senha")
     private Long  Senha;

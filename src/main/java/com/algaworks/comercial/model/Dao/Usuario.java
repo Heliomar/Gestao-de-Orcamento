@@ -5,9 +5,11 @@
  */
 package com.algaworks.comercial.model.Dao;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,14 +24,15 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="Usuario")
-public class Usuario{
+public class Usuario implements Serializable{
     
     
     @NotEmpty
     @Column(name="NomePaciente")
     private String NomePaciente;
     
-     @NotEmpty
+    @Id
+    @NotEmpty
     @Column(name="Atendimento")
     private String Atendimento;
     

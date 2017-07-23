@@ -6,6 +6,7 @@
 package com.algaworks.comercial.model.Dao;
 
 import com.algaworks.comercial.model.Dto.TipoItemDroga;
+import java.io.Serializable;
 //import com.algaworks.comercial.model.Orcamento;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -26,11 +28,15 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @author Helio
  */
 
-@ViewScoped
-    @Entity
-@ManagedBean
-@Table(name="Drogas")
-public class Drogas {
+//@ViewScoped
+@Entity
+//@ManagedBean
+@Table(name="drogas")
+public class Drogas{
+    
+    @Id
+    @Column(name="Id_Drogas")
+    private Integer Id_Drogas;
     
     @NotNull
     @Column(name="descricao")
@@ -44,13 +50,13 @@ public class Drogas {
     @Enumerated(EnumType.STRING)
     private TipoItem tipo;  
     
-    
+  
     @NotNull
     @NotEmpty
     @Column(name="NomeDroga")
     private String NomeDroga; 
     
-    @OneToMany(mappedBy = "Drogas", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "drogas", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TipoItemDroga> Item  = new ArrayList();
 
     /**
@@ -141,6 +147,20 @@ public class Drogas {
      */
     public void setTipo(TipoItem tipo) {
         this.tipo = tipo;
+    }
+
+    /**
+     * @return the Id_Drogas
+     */
+    public Integer getId_Drogas() {
+        return Id_Drogas;
+    }
+
+    /**
+     * @param Id_Drogas the Id_Drogas to set
+     */
+    public void setId_Drogas(Integer Id_Drogas) {
+        this.Id_Drogas = Id_Drogas;
     }
     
     

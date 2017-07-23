@@ -22,9 +22,13 @@ public class LoginRepositary implements Serializable{
     @Inject
     private EntityManager manager;
     
-     public Login guardarLogin(Login login){
+     public void  guardarLogin(Login login){
         
-            return manager.merge(login);
+         manager.getTransaction().begin();
+         manager.persist(login);
+         manager.getTransaction().commit();
+         manager.close();
+            //return login;//merge(login);
             
         
         }

@@ -8,6 +8,7 @@ package com.algaworks.comercial.controller;
 import com.algaworks.comercial.model.Dao.Hemodinamica;
 import com.algaworks.comercial.service.GestaoHemodinamicas;
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -27,17 +28,20 @@ public class GestaoDeHemodinamicaBean implements Serializable {
     @Inject
     private GestaoHemodinamicas gestaoHemodinamicas;
 
-    
-    
-    private Hemodinamica hemodinamica = new Hemodinamica();
+    @PostConstruct
+    public void Init(){
+    hemodinamica = new Hemodinamica();
+    }
+    private Hemodinamica hemodinamica;// = new Hemodinamica();
     
     
     //private HemodinamicaItem item;
    
-   public void salvarHemodinamica()
+   public void salvarHemodinamica(Hemodinamica hemodinamica)
    {
    
-      gestaoHemodinamicas.salvar(hemodinamica);
+     
+       gestaoHemodinamicas.salvar(hemodinamica);
        hemodinamica = new Hemodinamica();
    }
    

@@ -6,8 +6,10 @@
 package com.algaworks.comercial.model.Dao;
 
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -15,58 +17,58 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
-@Table(name = "Hemodinamica")
-public class Hemodinamica{
+@Table(name = "hemodinamica")
+public class Hemodinamica implements Serializable{
     
     
-  
+   @Id
    @NotEmpty
-   @Column(name="PressaoA")
-    private String PressaoA;
+   @Column(name="PressaoA", nullable=false)
+    private Integer PressaoA;
    
    @NotEmpty
-    @Column(name="PressaoAM")
+    @Column(name="PressaoAM",nullable=false)
     private Integer PressaoAMedia;
    
    @NotEmpty
-   @Column(name="frequencia")
+   @Column(name="frequencia", nullable=false)
     private Integer Frequencia;
    
    @NotEmpty
-    @Column(name="FrequenciaCardio")
+    @Column(name="FrequenciaCardio", nullable=false)
     private Integer FrequenciaCardio;
    
    @NotEmpty
-    @Column(name="temperatura")
+    @Column(name="temperatura",  nullable=false)
     private Integer Temperatura;
    
    @NotEmpty
-   @Column(name="saturacao")
+   @Column(name="saturacao",  nullable=false)
     private Integer Saturacao;
    
    @NotEmpty
-    @Column(name="HemoGt")
+    @Column(name="HemoGt",  nullable=false)
     private Integer HemoGT;
    
    @NotEmpty
-    @Column(name="Pia")
+    @Column(name="Pia",  nullable=false)
     private Integer Pia;
    
     @NotEmpty
-    @Column(name="Pvc")
+    @Column(name="Pvc",  nullable=false)
     private Integer Pvc;
 
     /**
      * @return the PressaoA
      */
-    public String getPressaoA() {
+    public Integer getPressaoA() {
         return PressaoA;
     }
 
     /**
      * @param PressaoA the PressaoA to set
      */
-    public void setPressaoA(String PressaoA) {
+    public void setPressaoA(Integer PressaoA) {
         this.PressaoA = PressaoA;
     }
 
