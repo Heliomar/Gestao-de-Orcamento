@@ -6,7 +6,6 @@
 package com.algaworks.comercial.service;
 
 import com.algaworks.comercial.model.Dao.Usuario;
-import com.algaworks.comercial.repository.DrogasRepository;
 import com.algaworks.comercial.repository.UsuarioRepository;
 import com.algaworks.comercial.util.Transacional;
 import java.io.Serializable;

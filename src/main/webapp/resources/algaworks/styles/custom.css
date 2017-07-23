@@ -17,12 +17,12 @@ body {
 }
 
 /* PANELGRID */
-.ui-panelgrid.panelgrid-noborder .ui-grid-responsive {
-	border: none;
+.ui-panelgrid .panelgrid-noborder .ui-grid-responsive {
+	border: none !important;
 }
 
 @media (max-width: 640px) {
-	.ui-panelgrid.panelgrid-noborder .ui-grid-responsive .ui-grid-row {
-		border: none;
+	.ui-panelgrid .panelgrid-noborder .ui-grid-responsive .ui-grid-row {
+		border: none !important;
 	}
 }

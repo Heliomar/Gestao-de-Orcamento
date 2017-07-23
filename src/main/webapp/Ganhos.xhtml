@@ -10,11 +10,10 @@
 		
 		<h:form id="frm">
 			
-                    <p:toolbar>
-                        <p:toolbarGroup class="divisorias">
-					
+                    <p:toolbarGroup>
+					<p:commandButton value="Salvar" 
+                                                         process="@this capaPanel" update="@form" />
 				</p:toolbarGroup>
-			</p:toolbar>
 			
 			<p:messages autoUpdate="false" />
 			
@@ -24,49 +23,49 @@
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
 				
-					<p:outputLabel value="Nome do Paciente" for="cliente" />
-                                        <p:inputText id="cliente" placeholder="Nome do Paciente" value="#{gestaoDeUsuarioBean.usuario.nomePaciente}" />
+					<p:outputLabel value="Nome do paciente" for="nomePaciente" />
+                                        <p:inputText id="nomePaciente" placeholder="Nome do Paciente" value="#{gestaoDeUsuarioBean.usuario.nomePaciente}" />
 					
 					<p:outputLabel value="Atendimento" for="atendimento" />
-                                        <p:inputMask id="atendimento" placeholder="Atendimento" maxlength="999" mask="999" value="#{gestaoDeUsuarioBean.usuario.atendimento}" />
+                                        <p:inputMask id="atendimento" required="true" placeholder="Atendimento" maxlength="7" mask="9999999" value="#{gestaoDeUsuarioBean.usuario.atendimento}" />
 					
-					<p:outputLabel value="Leito" for="tleito"/>
-                                        <p:inputText id="telefone" placeholder="Leito" value="#{gestaoDeUsuarioBean.usuario.leito}" />
+					<p:outputLabel value="Leito" for="leito"/>
+                                        <p:inputText id="leito" placeholder="Leito" maxlength="3" required="false" value="#{gestaoDeUsuarioBean.usuario.leito}"/>
+                                        
                                         
                                         <p:outputLabel value="Nome do Médico" />
-                                        <p:inputText  placeholder="Nome do Médico" value="#{gestaoDeUsuarioBean.usuario.nomeMedico}" />
+                                        <p:inputText id="nomeMedico"  placeholder="Nome do Médico" value="#{gestaoDeUsuarioBean.usuario.nomeMedico}" />
 					
 					
 					
-                                         <p:outputLabel for="datetime" value="Data/Hora :" class="ui-panelgrid"/>
-                                         <p:calendar id="datetime"  placeholder="Data/Horas"  pattern="MM/dd/yyyy HH:mm:ss" required="true" value="#{gestaoDeUsuarioBean.usuario.data}"/>
+                                         <p:outputLabel for="datatime" value="Data/Hora :" class="ui-panelgrid"/>
+                                         <p:calendar id="datatime"  placeholder="Data/Horas"  pattern="MM/dd/yyyy HH:mm:ss" required="true" value="#{gestaoDeUsuarioBean.usuario.data}"/>
  
 					
 				</p:panelGrid>
 			</div>
 			
 			<p:commandButton value="Novo Ganho"
-				action="#{cadastroOrcamentoBean.novoItem}"
+                                         action="#{gestaoDeGanhosBean.novoGanho}"
 				oncomplete="PF('itemDialog').show()"
 				process="@this" update="itemPanel">
 				<p:resetInput target="itemPanel" />
 			</p:commandButton>
                         
 					
-			<p:dataTable id="itensTable" value="#{cadastroOrcamentoBean.orcamento.itens}" var="item"
-				emptyMessage="Nenhum item adicionado."
-				style="margin-top: 10px">
+                        <p:dataTable id="itensTable" value="#{gestaoDeGanhosBean.ganho.itens}" var="item"
+				emptyMessage="Nenhum item adicionado."  style="margin-top: 10px">
 				
 				<p:column headerText="Descrição">
-					<h:outputText value="#{item.descricao}"/>
+                                    <h:outputText value="#{item.descricao}"/>
 				</p:column>
 				
 				<p:column headerText="Tipo">
-					<h:outputText value="#{item.tipo.descricao}"/>
+                                    <h:outputText value="#{item.tipo.descricao}"/>
 				</p:column>
 				
-				<p:column headerText="Preço">
-					<h:outputText value="#{item.preco}">
+				<p:column headerText="Volume">
+                                    <h:outputText value="#{item.volume}">
 						<f:convertNumber type="currency" />
 					</h:outputText>
 				</p:column>
@@ -83,34 +82,51 @@
 						columnClasses="ui-grid-col-4, ui-grid-col-8">
 					
 						<p:outputLabel value="Descrição" for="descricao" />
-						<p:inputText id="descricao" value="#{cadastroOrcamentoBean.item.descricao}"  />
+                                                <p:inputText id="descricao" value="#{gestaoDeGanhosBean.item.descricao}"  />
 						
 						<p:outputLabel value="Tipo" for="tipo" />
-						<p:selectOneMenu id="tipo" value="#{cadastroOrcamentoBean.item.tipo}">
+                                                <p:selectOneMenu id="tipo" value="#{gestaoDeGanhosBean.item.tipo}">
 							<f:selectItem itemLabel="Selecione" />
-							<f:selectItem itemLabel="Via Oral" itemValue="MEDICO" />
-							<f:selectItem itemLabel="Hemocomponentes" itemValue="ENFERMAGEM" />
-                                                        <f:selectItem itemLabel="Medicação" itemValue="MEDICO" />
-						</p:selectOneMenu>
+							<f:selectItem itemLabel="Oral" itemValue="ORAL" />
+                                                        <f:selectItem itemLabel="Venosa" itemValue="VENOSA" />
+							<f:selectItem itemLabel="Alimento" itemValue="ALIMENTO" />
+                                                        <f:selectItem itemLabel="Piora" itemValue="PIORA" />
+                                                        
+                                                </p:selectOneMenu>
 						
-						<p:outputLabel value="Preço" for="preco" />
-						<p:inputText id="preco" value="#{cadastroOrcamentoBean.item.preco}">
+						<p:outputLabel value="Volume" for="volume" />
+                                                <p:inputText id="volume" value="#{gestaoDeGanhosBean.item.volume}">
 							<f:convertNumber />
 						</p:inputText>
 						
 						<p:outputLabel/>
 						<p:commandButton value="Adicionar"
-                                                                 action="#{cadastroOrcamentoBean.adicionarItem}"
+                                                                 action="#{gestaoDeGanhosBean.adicionarGanhos}"
 							process="itemPanel" update="itemPanel itensTable"
-							oncomplete="if (!args.validationFailed) PF('itemDialog').hide()" />
+							oncomplete="if(!args.validationFailed)PF('itemDialog').hide()" />
 					
 					</p:panelGrid>
 					
 				</h:panelGroup>
+                            
+                             <h:panelGroup>            
+     
+                         <p:panelGrid columns="4" class="grid"
+					style="margin-top: 20px; margin-bottom: 40px"
+					styleClass="panelgrid-noborder"
+					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
+        
+                      
+             			
+              
+    </p:panelGrid>
+                                    
+                 </h:panelGroup>
+      
 				
 			</p:dialog>
                         
-                        <p:commandButton value="Salvar" action="#{cadastroOrcamentoBean.salvar}"
+                        <p:commandButton value="Salvar"
 			 process="@this capaPanel" update="@form" />
                         <p:commandButton value="Proximo" action="Drogas.xhtml?faces-redirect=true" ajax="false" class="ui-panelgrid"/>
 				

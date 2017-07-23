@@ -1,5 +1,5 @@
 package com.algaworks.comercial.model;
-
+/*
 public enum TipoItem {
 
 	MEDICO("Medico"),
@@ -16,3 +16,4 @@ public enum TipoItem {
 	}
 	
 }
+*/

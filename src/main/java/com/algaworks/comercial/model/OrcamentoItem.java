@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+/*
 @Entity
 @Table(name = "orcamento_item")
 public class OrcamentoItem {
@@ -101,3 +102,4 @@ public class OrcamentoItem {
 	}
 
 }
+*/

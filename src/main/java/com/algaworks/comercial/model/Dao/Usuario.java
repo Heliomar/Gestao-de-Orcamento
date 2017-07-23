@@ -5,10 +5,7 @@
  */
 package com.algaworks.comercial.model.Dao;
 
-import java.io.Serializable;
 import java.util.Date;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -22,7 +19,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  *
  * @author Helio
  */
-@ViewScoped
+
 @Entity
 @Table(name="Usuario")
 public class Usuario{

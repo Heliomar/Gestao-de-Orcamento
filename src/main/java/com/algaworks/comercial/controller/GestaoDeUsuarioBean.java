@@ -26,6 +26,8 @@ import javax.inject.Named;
 public class GestaoDeUsuarioBean implements Serializable {
     
     
+    private static final long serialVersionUID = 1L;
+    
     @Inject
     private GestaoUsuario gestaoUsuario;
     

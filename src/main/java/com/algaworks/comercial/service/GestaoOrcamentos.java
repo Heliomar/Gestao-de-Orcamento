@@ -1,5 +1,6 @@
-package com.algaworks.comercial.service;
+//package com.algaworks.comercial.service;
 
+/*
 import java.io.Serializable;
 
 import javax.inject.Inject;
@@ -21,3 +22,4 @@ public class GestaoOrcamentos implements Serializable {
 	}
 	
 }
+*/

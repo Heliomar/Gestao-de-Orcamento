@@ -8,56 +8,56 @@ package com.algaworks.comercial.model.Dao;
 import com.algaworks.comercial.model.Dto.TiposGanhos;
 import java.util.ArrayList;
 import java.util.List;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-import javax.inject.Named;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
  * @author Helio
  */
-@Named
-@ViewScoped
-@ManagedBean
+
+@Entity
+@Table(name ="ganho")
 public class Ganho{
+      
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     
     @NotEmpty
-    @Column(name="soro")
     private String Soro;
     
     @NotEmpty
-    @Column(name="volume")
-    private int Volume;
+    private String Volume;
     
-    @Column(name="medicacao")
-    private String Medicação;
+    @NotEmpty
+    private String Medicacao;
     
+    @NotEmpty
+    @Column(name="descricao")
+    private String Descricao;
+    
+    @NotEmpty
     @Column(name="hemocomponente")
     private String Hemocomponente;
     
-    @OneToMany(mappedBy = "ganhos", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TiposGanhos> Itens = new ArrayList();
-    
-    Ganho(String soro,int volume, String medicacao, String hemocomponente )
-    {
-       
-       this.Soro= soro;
-       this.Volume = volume;
-       this.Medicação = medicacao;
-       this.Hemocomponente = hemocomponente;       
-    
-    }
-    
-    
-
+    @OneToMany(mappedBy = "ganho", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TiposGanhos> itens = new ArrayList<>();
+   
+   
+   
     /**
      * @return the Soro
      */
-    @NotEmpty
+  
     public String getSoro() {
         return Soro;
     }
@@ -72,29 +72,29 @@ public class Ganho{
     /**
      * @return the Volume
      */
-    public int getVolume() {
+    public String getVolume() {
         return Volume;
     }
 
     /**
      * @param Volume the Volume to set
      */
-    public void setVolume(int Volume) {
+    public void setVolume(String Volume) {
         this.Volume = Volume;
     }
 
     /**
-     * @return the Medicação
+     * @return the MedicaÃ§Ã£o
      */
-    public String getMedicação() {
-        return Medicação;
+    public String getMedicao() {
+        return getMedicacao();
     }
 
     /**
-     * @param Medicação the Medicação to set
+     * @param Medicacao the MedicaÃ§Ã£o to set
      */
-    public void setMedicação(String Medicação) {
-        this.Medicação = Medicação;
+    public void setMedicao(String Medicacao) {
+        this.setMedicacao(Medicacao);
     }
 
     /**
@@ -115,14 +115,82 @@ public class Ganho{
      * @return the Itens
      */
     public List<TiposGanhos> getItens() {
-        return Itens;
+        return itens;
     }
 
     /**
      * @param Itens the Itens to set
      */
     public void setItens(List<TiposGanhos> Itens) {
-        this.Itens = Itens;
+        this.itens = Itens;
     }
+
+    /**
+     * @return the descricao
+     */
+    public String getDescricao() {
+        return Descricao;
+    }
+
+    /**
+     * @param descricao the descricao to set
+     */
+    public void setDescricao(String descricao) {
+        this.Descricao = descricao;
+    }
+
+    /**
+     * @return the Id_Ganho
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the Id_Ganho to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the Medicacao
+     */
+    public String getMedicacao() {
+        return Medicacao;
+    }
+
+    /**
+     * @param Medicacao the Medicacao to set
+     */
+    public void setMedicacao(String Medicacao) {
+        this.Medicacao = Medicacao;
+    }
+    
+    @Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Ganho other = (Ganho) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
     
 }

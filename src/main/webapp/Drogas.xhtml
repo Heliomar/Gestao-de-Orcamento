@@ -17,13 +17,13 @@
                 
                 
                                     <p:outputLabel value="Nome do Paciente" for="nome" class="ui-panelgrid"/>
-                                    <p:inputText id="nome" required="true" placeholder="nome" maxlength="25" value="#{gestaoDeUsuarioBean.usuario.setNomeMedico(NomeMedico)}" />
+                                    <p:inputText id="nome" required="true" placeholder="nome" maxlength="25" value="#{gestaoDeUsuarioBean.usuario.nomePaciente}" />
                     
-                                    <p:outputLabel value="Atendimento" for="atendimento" class="ui-panelgrid" id="atendimento"/>
-                                    <p:inputMask mask="999999" id="atendimento" required="true" placeholder="atendimento" maxlength="7" value="#{gestaoDeUsuarioBean.usuario.setAtendimento(Atendimento)}" />
+                                    <p:outputLabel value="Atendimento" for="atendimento" class="ui-panelgrid"/>
+                                    <p:inputMask mask="999999" id="atendimento" required="true" placeholder="atendimento" maxlength="7" value="#{gestaoDeUsuarioBean.usuario.atendimento}" />
                     
-                                    <p:outputLabel value="Leito do Paciente" for="leito" class="ui-panelgrid" id="leito"/>
-                                    <p:inputMask mask="999" id="leito" required="true" placeholder="leito" maxlength="3" value="#{gestaoDeUsuarioBean.usuario.setLeito(Leito)}" />
+                                    <p:outputLabel value="Leito do Paciente" for="leito" class="ui-panelgrid"/>
+                                    <p:inputMask mask="999" id="leito" required="true" placeholder="leito" maxlength="3" value="#{gestaoDeUsuarioBean.usuario.leito}" />
                     
                               </p:panelGrid>
                 </h:form> 
@@ -36,11 +36,11 @@
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
                         
-                        <p:outputLabel value="Medico Plantonista" for="nomeMedico" class="ui-panelgrid"  id="nomeMedico"/>
+                        <p:outputLabel value="Medico Plantonista" for="nomeMedico" class="ui-panelgrid"/>
                         <p:inputText id="nomeMedico" required="true" placeholder="Medico Plantonista" maxlength="32" value="#{gestaoDeUsuarioBean.usuario.setNomeMedico(NomeMedico)}" />
                     
                         
-                        <p:outputLabel for="datetime" value="Data/Hora :" class="ui-panelgrid" id="datetime"/>
+                        <p:outputLabel for="datetime" value="Data/Hora :" class="ui-panelgrid"/>
                         <p:calendar id="datetime" value="#{gestaoDeUsuarioBean.usuario.setData(data)}" pattern="MM/dd/yyyy HH:mm:ss" required="true"/>
  
         
@@ -115,7 +115,7 @@
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
         
-            <h:outputText value="Volume " class="ui-panelgrid"  id="volume"/>
+            <h:outputText value="Volume " class="ui-panelgrid"/>
             <p:keyboard id="volume"  showMode="button"  keypadOnly="true" required="true" value="#{gestaoDeDrogasBean.drogas.volume}"/>
         
         <p:outputLabel value="Tipo do Soro" for="tipo" />

@@ -9,6 +9,7 @@ package com.algaworks.comercial.model.Dao;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
 
@@ -17,9 +18,11 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name = "Hemodinamica")
 public class Hemodinamica{
     
+    
+  
    @NotEmpty
-    @Column(name="PressaoA")
-    private Integer PressaoA;
+   @Column(name="PressaoA")
+    private String PressaoA;
    
    @NotEmpty
     @Column(name="PressaoAM")
@@ -56,14 +59,14 @@ public class Hemodinamica{
     /**
      * @return the PressaoA
      */
-    public Integer getPressaoA() {
+    public String getPressaoA() {
         return PressaoA;
     }
 
     /**
      * @param PressaoA the PressaoA to set
      */
-    public void setPressaoA(Integer PressaoA) {
+    public void setPressaoA(String PressaoA) {
         this.PressaoA = PressaoA;
     }
 

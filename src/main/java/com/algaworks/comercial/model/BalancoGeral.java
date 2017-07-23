@@ -5,7 +5,7 @@
  */
 package com.algaworks.comercial.model;
 
-import com.algaworks.comercial.model.Dao.TipoItem;
+
 import com.algaworks.comercial.model.Dao.Drogas;
 import com.algaworks.comercial.model.Dao.Ganho;
 import com.algaworks.comercial.model.Dao.Perda;
@@ -40,10 +40,10 @@ public class BalancoGeral implements Serializable {
     }
     public ArrayList<Ganho> AdicionarGanho(Ganho ganho){
     
-        ganho.setHemocomponente("hemocomponentes");
-        ganho.setMedicação("medicacao");
+        ganho.setHemocomponente("ocomponentes");
+       //ganho.setMedicação("medicacao");
         ganho.setSoro("soro");
-        ganho.setMedicação("medicacao");
+       /// ganho.setMedicação("medicacao");
         
         ganhos.add(ganho);
         
@@ -84,10 +84,10 @@ public class BalancoGeral implements Serializable {
     
     public ArrayList<Drogas> AdicionarDrogas(Drogas  droga){
     
-       droga.setDrogas(TipoItem.Venosa);
+      
        droga.setDescricao("descricao");
        droga.setVolume("volume");
-       droga.setNomeDdroga("NomeDroga");
+       droga.setNomeDroga("NomeDroga");
       
        drogas.add(droga);
        

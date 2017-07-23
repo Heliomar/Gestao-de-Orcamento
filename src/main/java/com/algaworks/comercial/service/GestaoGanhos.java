@@ -5,8 +5,8 @@
  */
 package com.algaworks.comercial.service;
 
-import com.algaworks.comercial.model.Dao.Login;
-import com.algaworks.comercial.repository.LoginRepositary;
+import com.algaworks.comercial.model.Dao.Ganho;
+import com.algaworks.comercial.repository.GanhosRepository;
 import com.algaworks.comercial.util.Transacional;
 import java.io.Serializable;
 import javax.inject.Inject;
@@ -15,19 +15,20 @@ import javax.inject.Inject;
  *
  * @author Helio
  */
-public class GestaoLogin implements Serializable{
+public class GestaoGanhos implements Serializable {
     
-    private static final long serialVersionUID = 1L;
+     private static final long serialVersionUID = 1L;
+    //private static final 
     
     @Inject
-    private LoginRepositary logado;
+    private GanhosRepository ganhos;
     
     
     @Transacional
-    public void salvarLogin(Login login){        
-        logado.guardarLogin(login);
-
+    public void SalvarGanhos(Ganho ganho)
+    {
+    
+    ganhos.GuardaGanho(ganho);
     
     }
-    
 }

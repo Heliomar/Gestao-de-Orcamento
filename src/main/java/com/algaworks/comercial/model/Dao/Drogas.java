@@ -5,15 +5,20 @@
  */
 package com.algaworks.comercial.model.Dao;
 
+import com.algaworks.comercial.model.Dto.TipoItemDroga;
+//import com.algaworks.comercial.model.Orcamento;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -22,9 +27,12 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 
 @ViewScoped
+    @Entity
 @ManagedBean
+@Table(name="Drogas")
 public class Drogas {
     
+    @NotNull
     @Column(name="descricao")
     private String descricao;
     
@@ -32,16 +40,18 @@ public class Drogas {
     @Column(name="volume")
     private String Volume;
     
-    @NotEmpty
+    @NotNull
     @Enumerated(EnumType.STRING)
-    private TipoItem drogas;
+    private TipoItem tipo;  
     
+    
+    @NotNull
     @NotEmpty
-    @Column(name="nomeDroga")
+    @Column(name="NomeDroga")
     private String NomeDroga; 
     
-    @OneToMany(mappedBy = "drogas", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TipoItem> TipoItemDroga = new ArrayList();
+    @OneToMany(mappedBy = "Drogas", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TipoItemDroga> Item  = new ArrayList();
 
     /**
      * @return the Volume
@@ -60,16 +70,7 @@ public class Drogas {
     /**
      * @return the drogas
      */
-    public TipoItem getDrogas() {
-        return drogas;
-    }
-
-    /**
-     * @param drogas the drogas to set
-     */
-    public void setDrogas(TipoItem drogas) {
-        this.drogas = drogas;
-    }
+   
 
     /**
      * @return the NomeDdroga
@@ -81,24 +82,18 @@ public class Drogas {
     /**
      * @param NomeDroga the NomeDdroga to set
      */
-    public void setNomeDdroga(String NomeDroga) {
+    public void setNomeDroga(String NomeDroga) {
         this.NomeDroga = NomeDroga;
     }
 
     /**
      * @return the TipoItemDroga
      */
-    public List<TipoItem> getTipoItemDroga() {
-        return TipoItemDroga;
+    public List<TipoItemDroga> getItem() {
+        return Item;
     }
 
-    /**
-     * @param TipoItemDroga the TipoItemDroga to set
-     */
-    public void setTipoItemDroga(List<TipoItem> TipoItemDroga) {
-        this.TipoItemDroga = TipoItemDroga;
-    }
-
+    
     /**
      * @return the descricao
      */
@@ -112,5 +107,42 @@ public class Drogas {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    /**
+     * @param NomeDroga the NomeDroga to set
+     */
+    public void setNomedroga(String NomeDroga) {
+        this.NomeDroga = NomeDroga;
+    }
+
+    /**
+     * @return the Item
+     */
+    public List<TipoItemDroga> Item() {
+        return Item;
+    }
+
+    /**
+     * @param Item the Item to set
+     */
+    public void setItem(List<TipoItemDroga> Item) {
+        this.Item = Item;
+    }
+
+    /**
+     * @return the tipo
+     */
+    public TipoItem getTipo() {
+        return tipo;
+    }
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(TipoItem tipo) {
+        this.tipo = tipo;
+    }
+    
+    
     
 }

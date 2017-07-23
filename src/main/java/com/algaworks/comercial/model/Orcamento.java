@@ -19,7 +19,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 
 
-
+/*
 @Entity
 @Table(name = "orcamento")
 public class Orcamento {
@@ -144,3 +144,5 @@ public class Orcamento {
 	}
 
 }
+
+*/

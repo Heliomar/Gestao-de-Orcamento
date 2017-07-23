@@ -16,18 +16,43 @@ import javax.inject.Named;
  *
  * @author Helio
  */
-@ViewScoped
+
 @Named
+@ViewScoped
+
 public class GestaoDeLoginBean implements Serializable{
     
-    
+    private static final long serialVersionUID = 1L;
     
    @Inject
    private GestaoLogin gestaoLogin;
     
-    private Login login = new Login();
+   private Login login = new Login();
     
+  
+   
+   public void SalvarLogin(Login login)
+    {
+        
+        gestaoLogin.salvarLogin(login);
+        login = new Login();
+        
+     //   login = new Login();
+      
     
+    }
+  public Login ConfereLogin(Login login){
+    String nome = null;
+    
+    if(!login.getNome().equals(nome)){
+    
+        nome = login.getNome();
+    }
+          
+          
+  
+  return login;
+  } 
     
     
     public Login getLogin(){
@@ -36,24 +61,26 @@ public class GestaoDeLoginBean implements Serializable{
     }
     public void mostraLogado(Login login){
     
-        Integer id = login.getId_login();
-        String nomeLogin = login.getNome();
+       
+        String nome = login.getNome();
         Long senha = login.getSenha();
         
-        login.setId_login(id);
-        login.setNome(nomeLogin);
+        
+        login.setNome(nome);
         login.setSenha(senha);
         
     }
-    public void SalvarLogin()
-    {
     
-    login.getNome();
-    login.getSenha();
+    /**
+     * @return the gestaoLogin
+     */
     
-    gestaoLogin.salvar(login);
-       login = new Login();
-    
+   
+    /**
+     * @param login the login to set
+     */
+    public void setLogin(Login login) {
+        this.login = login;
     }
     
 }

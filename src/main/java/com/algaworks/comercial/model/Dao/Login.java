@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package com.algaworks.comercial.model.Dao;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.inject.Named;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -14,19 +16,17 @@ import org.hibernate.validator.constraints.NotEmpty;
  *
  * @author Helio
  */
-
+@Named
+@ManagedBean
 @ViewScoped
 @Entity
 @Table(name="Login")
 public class Login {
     
-    @NotEmpty
-    @Column(name="id_login")
-    private int Id_login;
     
     @NotEmpty
     @Column(name="nome")
-    private String nomeLogado;
+    private String nome;
     
     @NotEmpty
     @Column(name="Senha")
@@ -35,29 +35,22 @@ public class Login {
     /**
      * @return the Id_login
      */
-    public int getId_login() {
-        return Id_login;
-    }
+    
 
-    /**
-     * @param Id_login the Id_login to set
-     */
-    public void setId_login(int Id_login) {
-        this.Id_login = Id_login;
-    }
+   
 
     /**
      * @return the nome
      */
     public String getNome() {
-        return nomeLogado;
+        return nome;
     }
 
     /**
      * @param nome the nome to set
      */
     public void setNome(String nome) {
-        this.nomeLogado = nome;
+        this.nome = nome;
     }
 
     /**

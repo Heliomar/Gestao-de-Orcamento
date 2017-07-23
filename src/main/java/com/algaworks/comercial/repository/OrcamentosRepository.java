@@ -1,5 +1,5 @@
 package com.algaworks.comercial.repository;
-
+/*
 import java.io.Serializable;
 
 import javax.inject.Inject;
@@ -19,3 +19,4 @@ public class OrcamentosRepository implements Serializable {
 	}
 
 }
+*/

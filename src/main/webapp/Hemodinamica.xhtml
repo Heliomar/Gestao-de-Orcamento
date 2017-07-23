@@ -19,14 +19,14 @@
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
                 
                 
-                                    <p:outputLabel value="Nome do Paciente" for="nome" class="ui-panelgrid"/>
-                                    <p:inputText id="nome" required="true" placeholder="nome" maxlength="25" value="#{gestaoDeUsuarioBean.usuario.nomePaciente}" />
+                                    <p:outputLabel value="Nome do Paciente" for="nomePaciente" class="ui-panelgrid"/>
+                                    <p:inputText id="nomePaciente" required="true" placeholder="nome" maxlength="25" value="#{gestaoDeUsuarioBean.usuario.nomePaciente}" />
                     
                     <p:outputLabel value="Atendimento" for="atendimento" class="ui-panelgrid"/>
                     <p:inputMask mask="999999" id="atendimento" required="true" placeholder="atendimento" maxlength="7" value="#{gestaoDeUsuarioBean.usuario.atendimento}" />
                     
-                    <p:outputLabel id="leito" value="Leito do Paciente" for="leito" class="ui-panelgrid"/>
-                    <p:inputMask mask="999" required="true" placeholder="leito" maxlength="3" value="#{gestaoDeUsuarioBean.usuario.leito}" />
+                    <p:outputLabel value="Leito do Paciente" for="leito" class="ui-panelgrid"/>
+                    <p:inputMask mask="999" required="true" placeholder="leito" maxlength="3" id="leito" value="#{gestaoDeUsuarioBean.usuario.leito}" />
                     
                               </p:panelGrid>
                                     </h:form> 
@@ -87,8 +87,8 @@
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
         
-                             <h:outputText id="PressaoA" value="Pressão Arterial: " class="ui-panelgrid"/>
-                             <p:keyboard id="default" value="#{gestaoDeHemodinamicaBean.hemodinamica.pressaoA}" />
+                             <h:outputText id="pressaoA" value="PressaoA" class="ui-panelgrid"/>
+                             <p:keyboard id="default" value="#{gestaoDeHemodinamicaBean.hemodinamica.pressaoA}" required="true"/>
         
         <h:outputText value="PAM: "  class="ui-panelgrid"/>
         <p:keyboard id="buttonmodePAM"  showMode="button"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.pressaoAMedia}"/>
@@ -120,7 +120,7 @@
       
                     <p:toolbar>
 				<p:toolbarGroup>
-                                    <p:commandButton class="divisorias" value="Salvar Dinamica" action="#{gestaoDeHemodinamicaBean.salvarHemodinamica()}"
+                                    <p:commandButton id="salvaHemodinamica" class="divisorias" value="Salvar Dinamica" action="#{gestaoDeHemodinamicaBean.salvarHemodinamica()}"
                                                          process="@this capaPanel" update="@form"  styleClass="ui-panelgrid"/>
                                         <p:commandButton value="Proximo" action="Ganhos.xhtml?faces-redirect=true"  ajax="false" class="ui-panelgrid" />
                                         

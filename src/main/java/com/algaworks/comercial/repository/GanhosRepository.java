@@ -5,7 +5,7 @@
  */
 package com.algaworks.comercial.repository;
 
-import com.algaworks.comercial.model.Dao.Login;
+import com.algaworks.comercial.model.Dao.Ganho;
 import java.io.Serializable;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -14,18 +14,16 @@ import javax.persistence.EntityManager;
  *
  * @author Helio
  */
-public class LoginRepositary implements Serializable{
+public class GanhosRepository implements Serializable{
  
-    
-    private static final long serialVersionUID = 1L;
     
     @Inject
     private EntityManager manager;
     
-     public Login guardarLogin(Login login){
-        
-            return manager.merge(login);
-            
-        
-        }
+    public Ganho GuardaGanho(Ganho ganho )
+    {
+    
+       return manager.merge(ganho);
+    }
+    
 }

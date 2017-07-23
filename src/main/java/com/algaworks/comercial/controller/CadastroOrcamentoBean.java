@@ -7,7 +7,15 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.Serializable;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+
+/*
 import com.algaworks.comercial.model.Orcamento;
 import com.algaworks.comercial.model.OrcamentoItem;
 import com.algaworks.comercial.service.GestaoOrcamentos;
@@ -51,3 +59,5 @@ public class CadastroOrcamentoBean implements Serializable {
 	}
 	
 }
+
+*/
