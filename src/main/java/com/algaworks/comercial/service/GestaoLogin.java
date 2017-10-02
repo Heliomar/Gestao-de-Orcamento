@@ -9,6 +9,7 @@ import com.algaworks.comercial.model.Dao.Login;
 import com.algaworks.comercial.repository.LoginRepositary;
 import com.algaworks.comercial.util.Transacional;
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 /**
@@ -22,6 +23,11 @@ public class GestaoLogin implements Serializable{
     @Inject
     private LoginRepositary logado;
     
+    @PostConstruct
+    private void Init(){
+    
+        Login login = new Login();
+    }
     
     @Transacional
     public void salvarLogin(Login login){        

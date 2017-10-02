@@ -24,9 +24,10 @@ public class LoginRepositary implements Serializable{
     
      public void  guardarLogin(Login login){
         
-         manager.getTransaction().begin();
+         manager.getTransaction();
+         //manager.getTransaction().begin();
          manager.persist(login);
-         manager.getTransaction().commit();
+        // manager.getTransaction().commit();
          manager.close();
             //return login;//merge(login);
             

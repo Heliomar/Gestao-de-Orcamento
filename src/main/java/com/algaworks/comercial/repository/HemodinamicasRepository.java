@@ -23,18 +23,18 @@ public class HemodinamicasRepository implements Serializable{
 	@Inject
 	private EntityManager manager;
 	
-	public void guardarHemodinamica(Hemodinamica hemodinamica) {
+	public Hemodinamica guardarHemodinamica(Hemodinamica hemodinamica) {
             
                 //manager.getTransaction().begin();
                 manager.persist(hemodinamica);
-               // manager.getTransaction().commit();
                 manager.close();
+                        
 		
             
             FacesMessage fm = new FacesMessage("Hemodinamica salva com Sucesso..!");
             FacesContext.getCurrentInstance().addMessage("Hemodinamica", fm);
 
-            //return  manager.persist(hemodinamica);
+            return  hemodinamica;
 	}
     
 }

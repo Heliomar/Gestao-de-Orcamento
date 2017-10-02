@@ -10,8 +10,11 @@ import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -22,17 +25,21 @@ import org.hibernate.validator.constraints.NotEmpty;
 //@ManagedBean
 //@ViewScoped
 @Entity
-@Table(name="Login")
+@Table(name="login")
 public class Login implements Serializable {
     
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer Id_Login;
     
-    @NotEmpty
+    
+   
     @Column(name="nome")
     private String nome;
     
-    @Id
-    @NotEmpty
-    @Column(name="Senha")
+  
+   
+    @Column(name="senha")
     private Long  Senha;
 
     /**

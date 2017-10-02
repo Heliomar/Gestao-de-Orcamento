@@ -41,6 +41,7 @@ public class GestaoDeHemodinamicaBean implements Serializable {
    {
    
      
+ 
        gestaoHemodinamicas.salvar(hemodinamica);
        hemodinamica = new Hemodinamica();
    }
