@@ -9,6 +9,8 @@ import com.algaworks.comercial.model.Dao.Ganho;
 import com.algaworks.comercial.repository.GanhosRepository;
 import com.algaworks.comercial.util.Transacional;
 import java.io.Serializable;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 /**
@@ -28,7 +30,23 @@ public class GestaoGanhos implements Serializable {
     public void SalvarGanhos(Ganho ganho)
     {
     
-    ganhos.GuardaGanho(ganho);
+        if(ganho == null){
+        
+            ganho = new Ganho();
+            
+            ganhos.GuardaGanho(ganho);
+    
+            FacesMessage msg = new FacesMessage("Gestao Ganhos Salvou com sucesso!");
+	    FacesContext.getCurrentInstance().addMessage("Drogas", msg);
+    
+        }else{
+        
+        FacesMessage msg = new FacesMessage("Gestao Ganhos Não funcionou!");
+	FacesContext.getCurrentInstance().addMessage("Drogas", msg);
+    
+        
+        }
+   
     
     }
 }

@@ -17,6 +17,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -32,27 +34,30 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 //@ManagedBean
 @Table(name="drogas")
-public class Drogas{
+public class Drogas implements Serializable {
+    
+    public Drogas(){
+    }
     
     @Id
-    @Column(name="Id_Drogas")
-    private Integer Id_Drogas;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="Id_drogas",nullable=false)
+    private Long id_Drogas;
     
-    @NotNull
+   
     @Column(name="descricao")
     private String descricao;
+
     
-    @NotEmpty
     @Column(name="volume")
     private String Volume;
     
-    @NotNull
+    
     @Enumerated(EnumType.STRING)
     private TipoItem tipo;  
     
   
-    @NotNull
-    @NotEmpty
+    
     @Column(name="NomeDroga")
     private String NomeDroga; 
     
@@ -152,15 +157,15 @@ public class Drogas{
     /**
      * @return the Id_Drogas
      */
-    public Integer getId_Drogas() {
-        return Id_Drogas;
+    public Long getId_Drogas() {
+        return id_Drogas;
     }
 
     /**
-     * @param Id_Drogas the Id_Drogas to set
+     * @param id_Drogas the Id_Drogas to set
      */
-    public void setId_Drogas(Integer Id_Drogas) {
-        this.Id_Drogas = Id_Drogas;
+    public void setId_Drogas(Long id_Drogas) {
+        this.id_Drogas = id_Drogas;
     }
     
     

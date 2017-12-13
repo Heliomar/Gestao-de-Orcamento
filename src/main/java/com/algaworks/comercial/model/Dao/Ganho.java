@@ -31,27 +31,27 @@ public class Ganho implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     @Column(name="Id_ganho")
+    @Column(name="Id_ganho",nullable=false)
     private Long id;
     
     @NotEmpty
-     @Column(name="soro")
+    @Column(name="soro",nullable=false)
     private String Soro;
     
-    @NotEmpty
-     @Column(name="volume")
+    
+    @Column(name="volume")
     private String Volume;
     
     @NotEmpty
-    @Column(name="medicacao")
+    @Column(name="medicacao", nullable=false)
     private String Medicacao;
     
     @NotEmpty
-    @Column(name="descricao")
+    @Column(name="descricao", nullable=false)
     private String Descricao;
     
     @NotEmpty
-    @Column(name="hemocomponente")
+    @Column(name="hemocomponente", nullable=false)
     private String Hemocomponente;
     
     @OneToMany(mappedBy = "ganho", cascade = CascadeType.ALL, orphanRemoval = true)

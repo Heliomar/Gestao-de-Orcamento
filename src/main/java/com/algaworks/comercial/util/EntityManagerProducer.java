@@ -14,7 +14,6 @@ public class EntityManagerProducer {
 	
 	public EntityManagerProducer() {
 		
-                        
             this.factory = Persistence.createEntityManagerFactory("AlgaWorksPU");
 	}
 	

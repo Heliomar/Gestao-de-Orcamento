@@ -22,18 +22,32 @@ public class HemodinamicasRepository implements Serializable{
 
 	@Inject
 	private EntityManager manager;
+        
+        public HemodinamicasRepository(){
+                   
+        }
 	
 	public Hemodinamica guardarHemodinamica(Hemodinamica hemodinamica) {
             
+               if (hemodinamica == null){
+                   hemodinamica = new Hemodinamica();
                 //manager.getTransaction().begin();
                 manager.persist(hemodinamica);
-                manager.close();
-                        
-		
-            
-            FacesMessage fm = new FacesMessage("Hemodinamica salva com Sucesso..!");
+                manager.flush();
+                FacesMessage fm = new FacesMessage("Hemodinamica Persiste com Sucesso..!");
             FacesContext.getCurrentInstance().addMessage("Hemodinamica", fm);
 
+                
+               }else{
+                      manager.persist(hemodinamica);
+                      manager.flush();
+            FacesMessage fm = new FacesMessage("Hemodinamica Não Persiste com Sucesso..!");
+            FacesContext.getCurrentInstance().addMessage("Hemodinamica", fm);
+
+               }  
+            
+             manager.close();
+            
             return  hemodinamica;
 	}
     

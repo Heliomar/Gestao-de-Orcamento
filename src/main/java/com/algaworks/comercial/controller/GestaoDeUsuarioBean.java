@@ -11,7 +11,9 @@ import com.algaworks.comercial.service.GestaoUsuario;
 import java.io.Serializable;
 import java.util.Date;
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -23,7 +25,8 @@ import javax.inject.Named;
  */
 
 @Named
-@ViewScoped
+//@ViewScoped
+@SessionScoped
 public class GestaoDeUsuarioBean implements Serializable {
     
     
@@ -32,18 +35,21 @@ public class GestaoDeUsuarioBean implements Serializable {
     @Inject
     private GestaoUsuario gestaoUsuario;
     
-    @PostConstruct
-    public void Init(){
-    usuario = new Usuario();
-    }
     private Usuario usuario;
     
+    public GestaoDeUsuarioBean(){
+        usuario = new Usuario();
+     }
     
-    public Usuario getUsuario()
-    {
     
-       return usuario;
+    
+    @PostConstruct
+    public void Init(){
+        
+    System.out.println("inicialização Gestão de Usuario....!");
     }
+    
+    
     
     
     
@@ -73,21 +79,40 @@ public class GestaoDeUsuarioBean implements Serializable {
     
     }
     
-    public void SalvarUsuario()
-    {
+    public void SalvarUsuario(Usuario usuario)
+      {
+     if(usuario == null){
+         usuario = new Usuario();    
+            gestaoUsuario.salvar(usuario);
     
-    usuario.getAtendimento();
-    usuario.getData();
-    usuario.getLeito();
-    usuario.getNomeMedico();
-    usuario.getNomePaciente();
+      
     
-    gestaoUsuario.salvar(usuario);
-    
-    usuario = new Usuario();
-    FacesMessage msg = new FacesMessage("Usuarios salvos com sucesso!");
-		FacesContext.getCurrentInstance().addMessage(null, msg);
+       }else if (usuario != null){
+         gestaoUsuario.salvar(usuario);
+     
+       }
+      
     }
+
+    /**
+     * @return the usuario
+     */
+    public Usuario getUsuario() {
+        
+        if(usuario == null){        
+         usuario = new Usuario();
+        }
+        return usuario;
+    }
+
+    /**
+     * @param usuario the usuario to set
+     */
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    
     
     
 }

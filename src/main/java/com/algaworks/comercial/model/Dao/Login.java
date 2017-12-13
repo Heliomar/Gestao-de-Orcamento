@@ -21,18 +21,20 @@ import org.hibernate.validator.constraints.NotEmpty;
  *
  * @author Helio
  */
-@Named
-//@ManagedBean
-//@ViewScoped
+
 @Entity
 @Table(name="login")
 public class Login implements Serializable {
     
+    public Login(){
+    }
+    
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer Id_Login;
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long Id_Login;
     
     
+   
    
     @Column(name="nome")
     private String nome;
@@ -40,7 +42,7 @@ public class Login implements Serializable {
   
    
     @Column(name="senha")
-    private Long  Senha;
+    private String  Senha;
 
     /**
      * @return the Id_login
@@ -66,14 +68,14 @@ public class Login implements Serializable {
     /**
      * @return the Senha
      */
-    public Long getSenha() {
+    public String getSenha() {
         return Senha;
     }
 
     /**
      * @param Senha the Senha to set
      */
-    public void setSenha(Long Senha) {
+    public void setSenha(String Senha) {
         this.Senha = Senha;
     }
     

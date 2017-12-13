@@ -17,6 +17,10 @@
 	padding: 0;
 	list-style: none;
 }
+.barraHorizontal{
+    margin: 0;
+    background-color: #FFE4B5;
+}
 
 .aw-menu > ul a {
 	display: block;
@@ -73,4 +77,17 @@
 .capaPanel{
     margin-top: 20px;
     margin-bottom: 40px;
+}
+
+.usuario{
+    padding-left: 85%;
+    float: right;
+    height: 30px; 
+    line-height: 40px; 
+    margin-right: 100px; 
+    font-family: Georgia;
+    color: whitesmoke; 
+    font-size: 110%;
+    
+				
 }

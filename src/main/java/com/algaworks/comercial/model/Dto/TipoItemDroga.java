@@ -7,6 +7,7 @@ package com.algaworks.comercial.model.Dto;
 
 import com.algaworks.comercial.model.Dao.Drogas;
 import com.algaworks.comercial.model.Dao.TipoItem;
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -24,7 +25,11 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @Entity
 @Table(name ="tipo_ItemDroga")
-public class TipoItemDroga {
+public class TipoItemDroga implements Serializable {
+    
+    public TipoItemDroga(){
+    }
+    
     
     @NotNull
     @Enumerated(EnumType.STRING)

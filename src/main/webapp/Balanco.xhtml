@@ -8,10 +8,10 @@
 	<ui:define name="content">
 		<h1 class="aw-page-title">Balanço Hidrico do Paciente</h1>
                 
-                <p:messages autoUpdate="false" />
+                <p:messages autoUpdate="false" closable="true" />
 			
-                <h:form>
-				<p:panelGrid id="capaPanel" columns="4"  
+                <h:form id="frm">
+                    <p:panelGrid id="capaPanel" columns="4" layout="grid"  
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
@@ -21,38 +21,39 @@
                     <p:inputText id="nome" required="true" placeholder="nome" maxlength="25" />
                     
                     <p:outputLabel value="Atendimento" for="atendimento" class="ui-panelgrid"/>
-                    <p:inputMask mask="999999" id="atendimento" required="true" placeholder="atendimento" maxlength="7" />
+                    <p:inputMask mask="999999" id="atendimento" required="true" placeholder="atendimento" maxlength="7" value="" />
                     
                     <p:outputLabel value="LeitoPaciente" for="leito" class="ui-panelgrid"/>
-                    <p:inputMask mask="999" id="leito" required="true" placeholder="leito" maxlength="3" />
+                    <p:inputMask mask="999" id="leito" required="true" placeholder="leito" maxlength="3" value="#{gestaoDeUsuarioBean.usuario.leito}" />
+                    <h:outputText/>
                     
                               </p:panelGrid>
                 </h:form> 
                 
                 <h:form id="form">
-                    <p:panelGrid id="capaPanel" columns="4"
+                    <p:panelGrid id="capaPanel" columns="4" layout="grid"
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
                         
-                       <p:outputLabel value="Medico Plantonista" for="nomeMedico" class="ui-panelgrid" />
-                    <p:inputText id="nomeMedico" required="true" placeholder="Medico Plantonista" maxlength="32" />
+                       <p:outputLabel value="Medico Plantonista" for="nomeMedico" class="ui-panelgrid"/>
+                       <p:inputText id="nomeMedico" required="true" placeholder="Medico Plantonista" maxlength="32" value="#{gestaoDeUsuarioBean.usuario.nomeMedico}" />
                     
                         
                         <p:outputLabel for="datetime" value="Data/Hora :" class="ui-panelgrid"/>
-                        <p:calendar id="datetime" value="#{calendarView.date10}" pattern="MM/dd/yyyy HH:mm:ss" required="true"/>
+                        <p:calendar id="datetime" value="#{gestaoDeUsuarioBean.usuario.data}" placeholder="Data/Hora" pattern="dd/MM/yyyy HH:mm:ss" locale="pt" required="true"/>
  
         
                     </p:panelGrid>
                 </h:form>           
                               
 		
-		<h:form id="frm">
+		<h:form id="frm6">
                     
-			<p:messages autoUpdate="false" />
+                    <p:messages autoUpdate="false"  closable="true"/>
 			
 			<div class="ui-fluid">
-				<p:panelGrid id="capaPanel" columns="4" 
+                            <p:panelGrid id="capaPanel" columns="4" layout="grid" 
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
@@ -82,7 +83,7 @@
                     
                     <p:toolbar>
                         <p:toolbarGroup>
-                            <p:commandButton value="Salvar Dinamica" action="#{cadastroOrcamentoBean.salvar}"
+                            <p:commandButton value="Salvar Dinamica" action="#{gestaoDeHemodinamicaBean.salvarHemodinamica(hemodinamica)}"
                                                          process="@this capaPanel" update="@form"  styleClass="ui-panelgrid"/>
                                         <p:commandButton class="Barra" value="Proximo" action="Ganhos.xhtml?faces-redirect=true"  ajax="false" />
                                         <p:commandButton class="Barra" value="Pesquizar Dados"/>

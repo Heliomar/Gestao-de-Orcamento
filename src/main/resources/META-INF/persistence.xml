@@ -3,6 +3,7 @@
   <persistence-unit name="AlgaWorksPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <!-- <jta-data-source>enfermagem</jta-data-source>  -->
+    <!-- <provider>org.hibernate.ejb.HibernatePersistence</provider> -->
     <class>com.algaworks.comercial.model.Dao.Drogas</class>
     <class>com.algaworks.comercial.model.Dao.Ganho</class>
     <class>com.algaworks.comercial.model.Dao.Hemodinamica</class>
@@ -21,8 +22,8 @@
       <property name="hibernate.format_sql" value="true"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
       <property name="javax.persistence.schema-generation.create-source" value="metadata"/>
-      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
       <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
   </persistence-unit>
 </persistence>

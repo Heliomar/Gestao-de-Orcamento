@@ -11,6 +11,8 @@ import com.algaworks.comercial.model.Dto.TiposGanhos;
 import com.algaworks.comercial.service.GestaoGanhos;
 
 import java.io.Serializable;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -38,9 +40,19 @@ public class GestaoDeGanhosBean implements Serializable{
     @SuppressWarnings("UnusedAssignment")
     public void salvaGanhos(Ganho ganho)
     {
+        try{
+            if(ganho == null)
+                ganho = new Ganho();
         gestaoGanhos.SalvarGanhos(ganho);
 //  
-        ganho =  new Ganho();
+        
+        FacesMessage msg = new FacesMessage("Gestão de  Ganhos com sucesso!");
+        FacesContext.getCurrentInstance().addMessage("Ganhos", msg);
+        
+        }catch(Exception ex ){
+        
+        System.out.println("Sistema ganhos error"+ex);
+        }
     }
 
     public void novoGanho()

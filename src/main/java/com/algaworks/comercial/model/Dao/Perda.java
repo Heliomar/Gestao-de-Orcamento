@@ -12,9 +12,12 @@ import javax.faces.bean.ManagedBean;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -24,20 +27,28 @@ import org.hibernate.validator.constraints.NotEmpty;
 //@ManagedBean
 @Entity
 @Table(name = "perda")
-public class Perda{
-
+public class Perda implements Serializable{
+    
+    public Perda(){
+     }
+    
+   
     @Id
-    @Column(name="Id_Perda")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="Id_Perda",nullable=false)
     private Integer Id_Perda;
    
-    @NotEmpty
+    
+    @NotNull
     @Column(name = "Diurese")
     private String Diurese;
 
-    @NotEmpty
+    @NotNull
     @Column(name = "SondaNaso")
     private String SondaNaso;
 
+    
+    @NotNull
     @Column(name = "dreno")
     private String Dreno;
 

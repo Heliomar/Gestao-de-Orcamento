@@ -23,11 +23,14 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @Entity
 @Table(name = "perda_Item")
-public class PerdaItem{
+public class PerdaItem implements Serializable{
+    
+    public PerdaItem(){
+    }
     
         
         @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer Id_Item;
 	
 	@NotEmpty

@@ -7,44 +7,49 @@
 	
 	<ui:define name="content">
 		<h1 class="aw-page-title">Ganhos do Paciente</h1>
-		
+                
+                 <p:messages autoUpdate="false" closable="true" />
+                
 		<h:form id="frm">
 			
+                
                     <p:toolbarGroup>
 					<p:commandButton value="Salvar" 
                                                          process="@this capaPanel" update="@form" />
 				</p:toolbarGroup>
 			
-			<p:messages autoUpdate="false" />
+                   
 			
-			<div class="ui-fluid">
-                            <p:panelGrid id="capaPanel" columns="4" class="grid" 
+			
+                            <p:panelGrid id="capaPanel" columns="4" layout="grid" 
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
 				
-					<p:outputLabel value="Nome do paciente" for="nomePaciente" />
-                                        <p:inputText id="nomePaciente" placeholder="Nome do Paciente" value="#{gestaoDeUsuarioBean.usuario.nomePaciente}" />
+					<p:outputLabel value="Nome do Paciente" for="NomePaciente" class="ui-panelgrid" />
+                                        <p:inputText id="NomePaciente" placeholder="Nome do Paciente" value="#{gestaoDeUsuarioBean.usuario.nomePaciente}"/>
 					
-					<p:outputLabel value="Atendimento" for="atendimento" />
+					<p:outputLabel value="Atendimento" for="atendimento" class="ui-panelgrid" />
                                         <p:inputMask id="atendimento" required="true" placeholder="Atendimento" maxlength="7" mask="9999999" value="#{gestaoDeUsuarioBean.usuario.atendimento}" />
 					
-					<p:outputLabel value="Leito" for="leito"/>
-                                        <p:inputText id="leito" placeholder="Leito" maxlength="3" required="false" value="#{gestaoDeUsuarioBean.usuario.leito}"/>
+					<p:outputLabel value="Leito" for="Leito" class="ui-panelgrid"/>
+                                        <p:inputText id="Leito" placeholder="Leito" maxlength="3" required="true" value="#{gestaoDeUsuarioBean.usuario.leito}"/>
                                         
                                         
-                                        <p:outputLabel value="Nome do Médico" />
-                                        <p:inputText id="nomeMedico"  placeholder="Nome do Médico" value="#{gestaoDeUsuarioBean.usuario.nomeMedico}" />
+                                        <p:outputLabel value="Nome do Médico" for="NomeMedico" class="ui-panelgrid"/>
+                                        <p:inputText id="NomeMedico"  placeholder="Nome do Médico" value="#{gestaoDeUsuarioBean.usuario.nomeMedico}" />
 					
 					
 					
                                          <p:outputLabel for="datatime" value="Data/Hora :" class="ui-panelgrid"/>
-                                         <p:calendar id="datatime"  placeholder="Data/Horas"  pattern="MM/dd/yyyy HH:mm:ss" required="true" value="#{gestaoDeUsuarioBean.usuario.data}"/>
+                                         <p:calendar id="datatime"  placeholder="Data/Horas"  pattern="dd/MM/yyyy HH:mm:ss" locale="pt" required="true" value="#{gestaoDeUsuarioBean.usuario.data}"/>
  
 					
 				</p:panelGrid>
-			</div>
 			
+               
+                 <br/>
+                 
 			<p:commandButton value="Novo Ganho"
                                          action="#{gestaoDeGanhosBean.novoGanho}"
 				oncomplete="PF('itemDialog').show()"
@@ -56,17 +61,17 @@
                         <p:dataTable id="itensTable" value="#{gestaoDeGanhosBean.ganho.itens}" var="item"
 				emptyMessage="Nenhum item adicionado."  style="margin-top: 10px">
 				
-				<p:column headerText="Descrição">
+				<p:column headerText="Descrição" class="ui-panelgrid">
                                     <h:outputText value="#{item.descricao}"/>
 				</p:column>
 				
-				<p:column headerText="Tipo">
+				<p:column headerText="Tipo" class="ui-panelgrid">
                                     <h:outputText value="#{item.tipo.descricao}"/>
 				</p:column>
 				
-				<p:column headerText="Volume">
+				<p:column headerText="Volume" class="ui-panelgrid">
                                     <h:outputText value="#{item.volume}">
-						<f:convertNumber type="currency" />
+                                        <f:convertNumber maxIntegerDigits="3" minIntegerDigits="1" type="currency" />
 					</h:outputText>
 				</p:column>
 			
@@ -78,7 +83,7 @@
 				<h:panelGroup id="itemPanel" layout="block" styleClass="ui-fluid">
 					<p:messages id="msgDialog" autoUpdate="false" />
 					
-					<p:panelGrid columns="2" id="grid" styleClass="panelgrid-noborder"
+					<p:panelGrid columns="2" styleClass="panelgrid-noborder"
 						columnClasses="ui-grid-col-4, ui-grid-col-8">
 					
 						<p:outputLabel value="Descrição" for="descricao" />
@@ -120,19 +125,20 @@
              			
               
     </p:panelGrid>
-                                    
+                               
                  </h:panelGroup>
       
 				
 			</p:dialog>
-                        
-                        <p:commandButton value="Salvar"
+                   
+                        <p:commandButton value="Salvar" action="#{gestaoDeUsuarioBean.SalvarUsuario(usuario)}"
 			 process="@this capaPanel" update="@form" />
                         <p:commandButton value="Proximo" action="Drogas.xhtml?faces-redirect=true" ajax="false" class="ui-panelgrid"/>
-				
+			
+                        <p:commandButton value="Salvar Ganhos" action="#{gestaoDeGanhosBean.salvaGanhos(ganho)}"/>
                         
-		</h:form>
-                
+		
+                 </h:form>
                 
 	</ui:define>
 	

@@ -19,6 +19,8 @@ import java.util.ArrayList;
  */
 public class BalancoGeral implements Serializable {
     
+    public BalancoGeral(){
+    }
     
     final private ArrayList<Ganho> ganhos = new ArrayList<Ganho>();
     final private ArrayList<Perda> perdas =new ArrayList<Perda>();

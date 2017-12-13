@@ -9,6 +9,8 @@ import com.algaworks.comercial.model.Dao.Drogas;
 import com.algaworks.comercial.model.Dto.TipoItemDroga;
 import com.algaworks.comercial.service.GestaoDrogas;
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -20,7 +22,8 @@ import javax.inject.Named;
  * @author Helio
  */
 @Named
-@ViewScoped
+//@ViewScoped
+@SessionScoped
 public class GestaoDeDrogasBean implements Serializable{
     
     
@@ -29,13 +32,20 @@ public class GestaoDeDrogasBean implements Serializable{
     @Inject
     private GestaoDrogas gestaoDrogas;
     
+    private TipoItemDroga item; 
     
-    private Drogas drogas = new Drogas();
+    private Drogas drogas;// = new Drogas();
     
+    @PostConstruct
+    public void Init(){
+       System.out.println("Inicializando Gestão de Drogas  Bean....!");
     
-    private TipoItemDroga item;
+    }
+    public GestaoDeDrogasBean(){
+        drogas = new Drogas();
+       }
     
-    
+   
     public void NovaDroga()
     {    
         item = new TipoItemDroga();  
@@ -43,41 +53,30 @@ public class GestaoDeDrogasBean implements Serializable{
     
     public void AdicionarDroga()
     {
-      drogas.getItem().add(item);
-      item.setDrogas(drogas);
+      getDrogas().getItem().add(item);
+      item.setDrogas(getDrogas());
       
     }
-    public Drogas getDrogas()
+   
+    public void  SalvarDrogas(Drogas drogas)
     {
-    
-        return drogas;
-    }
-    
-    public void  SalvarDrogas()
-    {
-    
+        
         gestaoDrogas.salvar(drogas);
-        drogas = new Drogas();
-    
-    FacesMessage msg = new FacesMessage("Drogas salvas com sucesso!");
+        
+        FacesMessage msg = new FacesMessage("Drogas salvas com sucesso!");
 		FacesContext.getCurrentInstance().addMessage(null, msg);
     
     }
 
-    /**
-     * @return the gestaoDrogas
-     */
-    public GestaoDrogas getGestaoDrogas() {
-        return gestaoDrogas;
-    }
+    
 
-    /**
-     * @param gestaoDrogas the gestaoDrogas to set
-     */
-    public void setGestaoDrogas(GestaoDrogas gestaoDrogas) {
-        this.gestaoDrogas = gestaoDrogas;
+     public Drogas getDrogas()
+    {
+         if (drogas == null)
+             drogas = new Drogas();
+        return drogas;
     }
-
+    
     /**
      * @param drogas the drogas to set
      */

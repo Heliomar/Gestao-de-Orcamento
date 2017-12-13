@@ -6,6 +6,7 @@
 package com.algaworks.comercial.model.Dto;
 
 import com.algaworks.comercial.model.Dao.Ganho;
+import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -24,7 +25,10 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @Entity
 @Table(name = "tipos_ganhos")
-public class TiposGanhos {
+public class TiposGanhos implements Serializable{
+    
+    public TiposGanhos(){
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

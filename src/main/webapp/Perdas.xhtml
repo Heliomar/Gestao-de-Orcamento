@@ -7,57 +7,57 @@
 	
 	<ui:define name="content">
 		<h1 class="aw-page-title">Perdas de Componentes do Paciente</h1>
-                
-               <p:messages autoUpdate="false" />
-		<h:form>
-				<p:panelGrid id="capaPanel" columns="4" class="grid" 
+      
+               <p:messages autoUpdate="false" closable="true" />
+               <h:form id="f1">
+                    <p:panelGrid id="capaPanel" columns="4" layout="grid" 
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
                 
                 
                                     <p:outputLabel value="Nome do Paciente" for="nome" class="ui-panelgrid"/>
-                                    <p:inputText id="nome" required="true" placeholder="nome" maxlength="25" />
+                                    <p:inputText id="nome" required="true" placeholder="nome" maxlength="25" value="#{gestaoDeUsuarioBean.usuario.nomePaciente}"/>
                     
                     <p:outputLabel value="Atendimento" for="atendimento" class="ui-panelgrid"/>
-                    <p:inputMask mask="999999" id="atendimento" required="true" placeholder="atendimento" maxlength="7" />
+                    <p:inputMask mask="999999" id="atendimento" required="true" placeholder="atendimento" maxlength="7" value="#{gestaoDeUsuarioBean.usuario.atendimento}" />
                     
                     <p:outputLabel value="Leito do Paciente" for="leito" class="ui-panelgrid"/>
-                    <p:inputMask mask="999" id="leito" required="true" placeholder="leito" maxlength="3" />
+                    <p:inputMask mask="999" id="leito" required="true" placeholder="leito" maxlength="3" value="#{gestaoDeUsuarioBean.usuario.leito}" />
                     
                               </p:panelGrid>
                 </h:form> 
                 
                 <h:form id="form">
-                    <p:panelGrid id="capaPanel" columns="4" class="grid" 
+                    <p:panelGrid id="capaPanel" columns="4" layout="grid" 
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
                         
                        <p:outputLabel value="Medico Plantonista" for="nomeMedico" class="ui-panelgrid" />
-                    <p:inputText id="nomeMedico" required="true" placeholder="Medico Plantonista" maxlength="32" />
+                       <p:inputText id="nomeMedico" required="true" placeholder="Medico Plantonista" maxlength="32" value="#{gestaoDeUsuarioBean.usuario.nomeMedico}"/>
                     
                         
                         <p:outputLabel for="datetime" value="Data/Hora :" class="ui-panelgrid"/>
-                        <p:calendar id="datetime" value="#{calendarView.date10}" pattern="MM/dd/yyyy HH:mm:ss" required="true"/>
+                        <p:calendar id="datetime" value="#{gestaoDeUsuarioBean.usuario.data}" placeholder="Data/Hora:" pattern="dd/MM/yyyy HH:mm:ss" locale="pt" required="true"/>
  
         
                     </p:panelGrid>
                 </h:form>           
                               
 		
-		<h:form id="frm">
+               <h:form id="frm" class="barraHorizontal">
                     <p:toolbar>
-				<p:toolbarGroup>
-                                  
+                        <p:toolbarGroup>
+                                    <p:commandButton value="Voltar" action="Ganhos.xhtml?faces-redirect=true" process="@this capaPanel" update="@form"  styleClass="ui-panelgrid"/>
+                                    <p:commandButton value="Salvar Usuario" action="#{gestaoDeUsuarioBean.SalvarUsuario(usuario)}"  ajax="false" class="ui-panelgrid" />
+                                        
 				</p:toolbarGroup>
 			</p:toolbar>
 			
 			
-			<p:messages autoUpdate="false" />
-			
 			<div class="ui-fluid">
-				<p:panelGrid id="capaPanel" columns="4" class="grid" 
+                            <p:panelGrid id="capaPanel" columns="4" layout="grid" 
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
@@ -70,39 +70,36 @@
                 </h:form>	
 				
                 <h:form>
-                   
-                        
-       
-                    <p:messages autoUpdate="false" />
                     
                      <h:panelGroup>            
      
-        <p:panelGrid id="capaPanel" columns="4" class="grid" 
+                         <p:panelGrid id="capaPanel" columns="4" layout="grid" 
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
         
-            <h:outputText id="Diurese" value="Diurese: " class="ui-panelgrid" />
-            <p:keyboard id="default" value="#{gestaoDePerdasBean.perda.diurese}"/>
+            <h:outputText id="diurese" value="Diurese: " class="ui-panelgrid" />
+            <p:keyboard id="Diurese" required="true" placeholder="Diurese" value="#{gestaoDePerdasBean.perda.diurese}"/>
         
-        <h:outputText value="Sonda Nasogastrica: "  class="ui-panelgrid"/>
-        <p:keyboard id="buttonmodeSNG"  showMode="button"  keypadOnly="true" value="#{gestaoDePerdasBean.perda.sondaNaso}"/>
+            <h:outputText id="sondaNaso" value="Sonda Nasogastrica: "   class="ui-panelgrid"/>
+            <p:keyboard id="buttonmodeSNG"  showMode="button" placeholder="Sonda Nasogastrica"  requiredMessage="true" required="true" keypadOnly="true" value="#{gestaoDePerdasBean.perda.sondaNaso}"/>
         
-        <h:outputText value="Dreno: " class="ui-panelgrid" />
-        <p:keyboard id="buttonmodedreno"  showMode="button"  keypadOnly="true" value="#{gestaoDePerdasBean.perda.dreno}"/>
+        <h:outputText id="Dreno" value="Dreno: " class="ui-panelgrid" />
+        <p:keyboard id="buttonmodedreno"  showMode="button"  placeholder="Dreno"  required="true" keypadOnly="true" value="#{gestaoDePerdasBean.perda.dreno}"/>
         
-             <h:outputText value="Hemodialise: " class="ui-panelgrid" />
-             <p:keyboard id="buttonmodeCardiaca"  showMode="button"  keypadOnly="true" value="#{gestaoDePerdasBean.perda.hemodialise}"/>
+        <h:outputText id="buttonhemodialise" value="Hemodialise" class="ui-panelgrid" />
+        <p:keyboard id="buttonHemodialise"  showMode="button"  keypadOnly="true" placeholder="Hemodialise" value="#{gestaoDePerdasBean.perda.hemodialise}"/>
         
        
        
     </p:panelGrid>
-                                    
+                        
+                        
                  </h:panelGroup>
       
                     <p:toolbar>
 				<p:toolbarGroup>
-					<p:commandButton value="Salvar Dinamica" action="#{cadastroOrcamentoBean.salvar}"
+                                    <p:commandButton value="Salvar Perdas" action="#{gestaoDePerdasBean.salvarPerda(perda)}"
                                                          process="@this capaPanel" update="@form"  styleClass="ui-panelgrid"/>
                                         <p:commandButton value="Proximo" action="Balanco.xhtml?faces-redirect=true"  ajax="false" class="ui-panelgrid" />
                                         

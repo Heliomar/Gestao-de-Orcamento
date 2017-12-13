@@ -7,6 +7,8 @@ package com.algaworks.comercial.repository;
 
 import com.algaworks.comercial.model.Dao.Login;
 import java.io.Serializable;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
@@ -22,15 +24,19 @@ public class LoginRepositary implements Serializable{
     @Inject
     private EntityManager manager;
     
+   
+    
      public void  guardarLogin(Login login){
         
-         manager.getTransaction();
-         //manager.getTransaction().begin();
-         manager.persist(login);
-        // manager.getTransaction().commit();
-         manager.close();
-            //return login;//merge(login);
-            
-        
+         if(login != null){
+             
+           manager.persist(login);
+         
+          FacesMessage fm = new FacesMessage("Login Persiste com Sucesso..!");
+            FacesContext.getCurrentInstance().addMessage("Login", fm);
+         }
+         //manager.getTransaction().commit();
+          // manager.merge(login);
+        manager.clear();
         }
 }

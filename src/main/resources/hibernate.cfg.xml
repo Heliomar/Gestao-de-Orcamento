@@ -10,7 +10,5 @@
     <property name="hibernate.connection.pool_size">5</property>
     <property name="hibernate.connection.autocommit">true</property>
     <property name="hibernate.format_sql">true</property>
-    <mapping class="com.algaworks.comercial.model.Dao.Login"/>
-    <mapping class="com.algaworks.comercial.model.Dao.Hemodinamica"/>
   </session-factory>
 </hibernate-configuration>

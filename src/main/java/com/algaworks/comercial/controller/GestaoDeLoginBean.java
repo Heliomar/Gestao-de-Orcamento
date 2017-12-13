@@ -8,6 +8,8 @@ package com.algaworks.comercial.controller;
 import com.algaworks.comercial.model.Dao.Login;
 import com.algaworks.comercial.service.GestaoLogin;
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -18,8 +20,7 @@ import javax.inject.Named;
  */
 
 @Named
-@ViewScoped
-
+@SessionScoped
 public class GestaoDeLoginBean implements Serializable{
     
     private static final long serialVersionUID = 1L;
@@ -27,22 +28,23 @@ public class GestaoDeLoginBean implements Serializable{
    @Inject
    private GestaoLogin gestaoLogin;
     
-   private Login login = new Login();
-    
-  
+   private Login login;
    
+   
+   public GestaoDeLoginBean(){
+       this.login = new Login();
+       System.out.println("inicializando Gestao Login Bean...!");
+   }
+    
+    
    public void SalvarLogin(Login login)
     {
-        
- 
         gestaoLogin.salvarLogin(login);
-        login = new Login();
-        
-     //   login = new Login();
-      
-    
+           
     }
-  public Login ConfereLogin(Login login){
+   
+  public Login ConfereLogin(Login login)
+  {
     String nome = null;
     
     if(!login.getNome().equals(nome)){
@@ -50,26 +52,16 @@ public class GestaoDeLoginBean implements Serializable{
         nome = login.getNome();
     }
           
-          
-  
-  return login;
+       return login;
   } 
     
     
     public Login getLogin(){
-        
+    
         return login;
     }
     public void mostraLogado(Login login){
     
-       
-        String nome = login.getNome();
-        Long senha = login.getSenha();
-        
-        
-        login.setNome(nome);
-        login.setSenha(senha);
-        
     }
     
     /**
@@ -80,8 +72,5 @@ public class GestaoDeLoginBean implements Serializable{
     /**
      * @param login the login to set
      */
-    public void setLogin(Login login) {
-        this.login = login;
-    }
     
 }

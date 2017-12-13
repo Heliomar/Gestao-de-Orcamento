@@ -9,9 +9,10 @@ package com.algaworks.comercial.model.Dao;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
 
@@ -20,168 +21,188 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name = "hemodinamica")
 public class Hemodinamica implements Serializable{
     
+    public Hemodinamica(){
+    }
+   
+    @Id
+    @Column(name="Id_Hemodinamica")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long Id_Hemodinamica;
     
-   @Id
-   @NotEmpty
-   @Column(name="PressaoA", nullable=false)
-    private Integer PressaoA;
+    
+    @Column(name="PressaoA")
+    private String PressaoA;
    
-   @NotEmpty
-    @Column(name="PressaoAM",nullable=false)
-    private Integer PressaoAMedia;
+    
+    @Column(name="PressaoAM")
+    private String PressaoAMedia;
    
-   @NotEmpty
-   @Column(name="frequencia", nullable=false)
-    private Integer Frequencia;
    
-   @NotEmpty
-    @Column(name="FrequenciaCardio", nullable=false)
-    private Integer FrequenciaCardio;
+    @Column(name="frequencia")
+    private String Frequencia;
    
-   @NotEmpty
-    @Column(name="temperatura",  nullable=false)
-    private Integer Temperatura;
    
-   @NotEmpty
-   @Column(name="saturacao",  nullable=false)
-    private Integer Saturacao;
+    @Column(name="FrequenciaCardio")
+    private String FrequenciaCardio;
    
-   @NotEmpty
-    @Column(name="HemoGt",  nullable=false)
-    private Integer HemoGT;
    
-   @NotEmpty
-    @Column(name="Pia",  nullable=false)
-    private Integer Pia;
+    @Column(name="temperatura")
+    private String Temperatura;
    
-    @NotEmpty
-    @Column(name="Pvc",  nullable=false)
-    private Integer Pvc;
+  
+    @Column(name="saturacao")
+    private String Saturacao;
+   
+   
+    @Column(name="HemoGt")
+    private String HemoGT;
+   
+
+    @Column(name="Pia")
+    private String Pia;
+   
+   
+    @Column(name="Pvc")
+    private String Pvc;
 
     /**
      * @return the PressaoA
      */
-    public Integer getPressaoA() {
+    public String getPressaoA() {
         return PressaoA;
     }
 
     /**
      * @param PressaoA the PressaoA to set
      */
-    public void setPressaoA(Integer PressaoA) {
+    public void setPressaoA(String PressaoA) {
         this.PressaoA = PressaoA;
     }
 
     /**
      * @return the PressaoAMedia
      */
-    public Integer getPressaoAMedia() {
+    public String getPressaoAMedia() {
         return PressaoAMedia;
     }
 
     /**
      * @param PressaoAMedia the PressaoAMedia to set
      */
-    public void setPressaoAMedia(Integer PressaoAMedia) {
+    public void setPressaoAMedia(String PressaoAMedia) {
         this.PressaoAMedia = PressaoAMedia;
     }
 
     /**
      * @return the Frequencia
      */
-    public Integer getFrequencia() {
+    public String getFrequencia() {
         return Frequencia;
     }
 
     /**
      * @param Frequencia the Frequencia to set
      */
-    public void setFrequencia(Integer Frequencia) {
+    public void setFrequencia(String Frequencia) {
         this.Frequencia = Frequencia;
     }
 
     /**
      * @return the FrequenciaCardio
      */
-    public Integer getFrequenciaCardio() {
+    public String getFrequenciaCardio() {
         return FrequenciaCardio;
     }
 
     /**
      * @param FrequenciaCardio the FrequenciaCardio to set
      */
-    public void setFrequenciaCardio(Integer FrequenciaCardio) {
+    public void setFrequenciaCardio(String FrequenciaCardio) {
         this.FrequenciaCardio = FrequenciaCardio;
     }
 
     /**
      * @return the Temperatura
      */
-    public Integer getTemperatura() {
+    public String getTemperatura() {
         return Temperatura;
     }
 
     /**
      * @param Temperatura the Temperatura to set
      */
-    public void setTemperatura(Integer Temperatura) {
+    public void setTemperatura(String Temperatura) {
         this.Temperatura = Temperatura;
     }
 
     /**
      * @return the Saturacao
      */
-    public Integer getSaturacao() {
+    public String getSaturacao() {
         return Saturacao;
     }
 
     /**
      * @param Saturacao the Saturacao to set
      */
-    public void setSaturacao(Integer Saturacao) {
+    public void setSaturacao(String Saturacao) {
         this.Saturacao = Saturacao;
     }
 
     /**
      * @return the HemoGT
      */
-    public Integer getHemoGT() {
+    public String getHemoGT() {
         return HemoGT;
     }
 
     /**
      * @param HemoGT the HemoGT to set
      */
-    public void setHemoGT(Integer HemoGT) {
+    public void setHemoGT(String HemoGT) {
         this.HemoGT = HemoGT;
     }
 
     /**
      * @return the Pia
      */
-    public Integer getPia() {
+    public String getPia() {
         return Pia;
     }
 
     /**
      * @param Pia the Pia to set
      */
-    public void setPia(Integer Pia) {
+    public void setPia(String Pia) {
         this.Pia = Pia;
     }
 
     /**
      * @return the Pvc
      */
-    public Integer getPvc() {
+    public String getPvc() {
         return Pvc;
     }
 
     /**
      * @param Pvc the Pvc to set
      */
-    public void setPvc(Integer Pvc) {
+    public void setPvc(String Pvc) {
         this.Pvc = Pvc;
+    }
+
+    /**
+     * @return the Id_Hemodinamica
+     */
+    public Long getId_Hemodinamica() {
+        return Id_Hemodinamica;
+    }
+
+    /**
+     * @param Id_Hemodinamica the Id_Hemodinamica to set
+     */
+    public void setId_Hemodinamica(Long Id_Hemodinamica) {
+        this.Id_Hemodinamica = Id_Hemodinamica;
     }
     
     

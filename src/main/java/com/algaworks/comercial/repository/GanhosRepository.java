@@ -7,6 +7,8 @@ package com.algaworks.comercial.repository;
 
 import com.algaworks.comercial.model.Dao.Ganho;
 import java.io.Serializable;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
@@ -22,8 +24,14 @@ public class GanhosRepository implements Serializable{
     
     public Ganho GuardaGanho(Ganho ganho )
     {
+    manager.persist(ganho);
     
-       return manager.merge(ganho);
+    FacesMessage msg = new FacesMessage("Ganhos Persistindo com sucesso!");
+    FacesContext.getCurrentInstance().addMessage("Drogas", msg);
+    
+    manager.flush();
+        
+       return ganho;
     }
     
 }

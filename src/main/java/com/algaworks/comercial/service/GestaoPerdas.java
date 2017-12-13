@@ -10,6 +10,8 @@ import com.algaworks.comercial.repository.PerdaRepositary;
 
 import com.algaworks.comercial.util.Transacional;
 import java.io.Serializable;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 /**
@@ -25,7 +27,22 @@ public class GestaoPerdas implements Serializable{
 	
 	@Transacional
 	public void salvar(Perda perda) {
+            
+             if(perda != null){
 		Perdas.guardarPerda(perda);
+                
+               FacesMessage msg = new FacesMessage(" Gestao de Perdas salva com sucesso!");
+	      FacesContext.getCurrentInstance().addMessage("Perdas", msg);
+             
+             }else{
+             
+                 Perdas.guardarPerda(perda);
+              
+              FacesMessage msg = new FacesMessage(" Gestao de Perdas salva com sucesso!");
+	      FacesContext.getCurrentInstance().addMessage("Perdas", msg);
+                                 
+            
+             }
 	}
     
 }

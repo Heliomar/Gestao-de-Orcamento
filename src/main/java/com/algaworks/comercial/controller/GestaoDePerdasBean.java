@@ -45,17 +45,24 @@ public class GestaoDePerdasBean implements Serializable {
          perda.getDiurese();
     
     }
-    public void salvarPerda()
+    public void salvarPerda(Perda perda)
     {
-    
-            gestaoPerdas.salvar(perda);
-            perda = new Perda();
-            
+     if (perda == null){
+         
+          perda = new Perda();          
+          gestaoPerdas.salvar(perda);
+                       
             FacesMessage msg = new FacesMessage("As Perdas salva com sucesso!");
-		FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
+	    FacesContext.getCurrentInstance().addMessage(null, msg);
+      }else{
+     
+          gestaoPerdas.salvar(perda);
+                       
+            FacesMessage msg = new FacesMessage("As Perdas salva com sucesso!");
+	    FacesContext.getCurrentInstance().addMessage(null, msg);
+     }
 
-    
+    }
      public  Perda getPerda()
      {
         return perda;

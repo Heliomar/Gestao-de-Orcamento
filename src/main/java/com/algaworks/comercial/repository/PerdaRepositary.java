@@ -7,6 +7,8 @@ package com.algaworks.comercial.repository;
 
 import com.algaworks.comercial.model.Dao.Perda;
 import java.io.Serializable;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
@@ -23,6 +25,13 @@ public class PerdaRepositary implements Serializable {
 	private EntityManager manager;
 	
 	public Perda guardarPerda(Perda perda) {
-		return manager.merge(perda);
+            
+            manager.persist(perda);
+            manager.flush();
+		
+            FacesMessage msg = new FacesMessage(" Perdas Persiste  com sucesso!");
+	      FacesContext.getCurrentInstance().addMessage("Perda", msg);
+              
+             return perda;
 	}
 }
