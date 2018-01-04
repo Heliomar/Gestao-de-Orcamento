@@ -37,6 +37,6 @@ public class LoginRepositary implements Serializable{
          }
          //manager.getTransaction().commit();
           // manager.merge(login);
-        manager.clear();
+        manager.flush();
         }
 }

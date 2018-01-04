@@ -27,8 +27,8 @@ public class DrogasRepository implements Serializable {
 	public Drogas guardarDrogas(Drogas drogas) {
          
             try{
-         
-                manager.persist(drogas);
+                   if(drogas != null)
+                     manager.persist(drogas);
                   manager.flush();
             
             

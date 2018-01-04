@@ -8,9 +8,12 @@ package com.algaworks.comercial.model;
 
 import com.algaworks.comercial.model.Dao.Drogas;
 import com.algaworks.comercial.model.Dao.Ganho;
+import com.algaworks.comercial.model.Dao.Login;
 import com.algaworks.comercial.model.Dao.Perda;
+import com.algaworks.comercial.relatorio.Relatorios;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -22,97 +25,21 @@ public class BalancoGeral implements Serializable {
     public BalancoGeral(){
     }
     
-    final private ArrayList<Ganho> ganhos = new ArrayList<Ganho>();
-    final private ArrayList<Perda> perdas =new ArrayList<Perda>();
-    final private ArrayList<Drogas> drogas = new ArrayList<Drogas>();
-
+     private ArrayList<Ganho> ganhos = new ArrayList<Ganho>();
+     private ArrayList<Perda> perdas = new ArrayList<Perda>();
+     private ArrayList<Drogas> drogas = new ArrayList<Drogas>();
+   
     
    
     public void CadastrarGanhos(Ganho ganho){    
     ganhos.add(ganho);
     }
     
-    public int numerosGanhos(){    
-        return ganhos.size();               
-    }
-    
-    public void ExcluirGanhos(Ganho ganho){
-    
-    ganhos.remove(ganho);
-    }
-    public ArrayList<Ganho> AdicionarGanho(Ganho ganho){
-    
-        ganho.setHemocomponente("ocomponentes");
-       //ganho.setMedicação("medicacao");
-        ganho.setSoro("soro");
-       /// ganho.setMedicação("medicacao");
-        
-        ganhos.add(ganho);
-        
-        ganhos.clear();
-       
-        return ganhos;
-    
-    }
     public ArrayList<Perda> AdicionarPerdas(Perda perda){
-    
-        perda.setDiurese("diurese");
-        perda.setDreno("dreno");
-        perda.setHemodialise("hemodialise");
-        perda.setSondaNaso("sondaNaso");
-        
-       perdas.add(perda);
+   
+        perdas.add(perda);
        
-       perdas.clear();
-    
-       return perdas;
-    }
-    public void ExcluirPerda(Perda perda){
-    
-    perdas.remove(perda);
-    }
-    
-    public int numerosdePerdas(Perda perda){
-     
-        return perdas.size();
-    }
-    
-    public void CadastrarPerda(Perda perda){
-    
-      perdas.add(perda);
-      
-      perdas.clear();
-    }
-    
-    public ArrayList<Drogas> AdicionarDrogas(Drogas  droga){
-    
-      
-       droga.setDescricao("descricao");
-       droga.setVolume("volume");
-       droga.setNomeDroga("NomeDroga");
-      
-       drogas.add(droga);
-       
-       drogas.clear();
-     
-       return drogas;
-    }
-    public void ExcluirDrogas(Drogas droga){
-    
-        drogas.remove(droga);
-        
-        drogas.clear();
-    
-    }
-    
-    public int numerosDrogas(Drogas droga){
-    
-       return drogas.size();
-    
-    }
-    public void CadastrarDroga(Drogas droga){
-    
-    drogas.add(droga);
+        return perdas;
     }
     
    

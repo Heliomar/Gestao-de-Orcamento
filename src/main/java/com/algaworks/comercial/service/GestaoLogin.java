@@ -34,13 +34,13 @@ public class GestaoLogin implements Serializable{
     
     @PostConstruct
     public void Init(){
-           
-        System.out.println("inicializando Gestao Login...!");
-    }
+     }
+    
     @Transacional
     public void salvarLogin(Login login){   
         
        try{
+           if(login != null)
         logado.guardarLogin(login);
         
          FacesMessage fm = new FacesMessage("Logado com Sucesso..!");
@@ -52,8 +52,7 @@ public class GestaoLogin implements Serializable{
            
          }finally{
            
-           System.out.println("  finalizando acesso a login....!");
-       
+          
             }
                 
         }

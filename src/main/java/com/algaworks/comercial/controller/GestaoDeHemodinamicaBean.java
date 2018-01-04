@@ -34,27 +34,28 @@ public class GestaoDeHemodinamicaBean implements Serializable{
     public GestaoDeHemodinamicaBean(){
     
         hemodinamica = new Hemodinamica();
+        System.out.println("inicializando classe Hemodinamica Bean...!");
     }
     
     @PostConstruct
     public void Init(){
     System.out.println(" Inicializando....Gestao de Hemodinamica...!");
     }
-    // = new Hemodinamica();
     
-    
-    //private HemodinamicaItem item;
-   
    public void salvarHemodinamica(Hemodinamica hemodinamica)
    {
-          gestaoHemodinamica.salvar(hemodinamica);
-              
-            FacesMessage fm = new FacesMessage("GestaoHemodinamica Com  muito Sucesso..!");
-            FacesContext.getCurrentInstance().addMessage("Hemodinamica", fm);
-
-                 
-      
-                 
+       try{   
+           
+           if(hemodinamica != null)
+       gestaoHemodinamica.salvar(hemodinamica);
+           FacesMessage msg = new FacesMessage("Hemodinamica salvas com sucesso....!");
+		FacesContext.getCurrentInstance().addMessage("Hemodinamica", msg);
+                
+       }catch(Exception ex){
+       
+           System.out.println(" nao salvou comm certeza.."+ex);
+       }       
+           
    }
    
    public Hemodinamica getHemodinamica()

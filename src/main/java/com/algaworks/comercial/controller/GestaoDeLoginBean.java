@@ -1,15 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.algaworks.comercial.controller;
 
 import com.algaworks.comercial.model.Dao.Login;
 import com.algaworks.comercial.service.GestaoLogin;
 import java.io.Serializable;
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -20,57 +13,57 @@ import javax.inject.Named;
  */
 
 @Named
-@SessionScoped
+//@SessionScoped
+@ViewScoped
 public class GestaoDeLoginBean implements Serializable{
     
     private static final long serialVersionUID = 1L;
     
    @Inject
    private GestaoLogin gestaoLogin;
-    
+   
+   
    private Login login;
    
    
    public GestaoDeLoginBean(){
-       this.login = new Login();
-       System.out.println("inicializando Gestao Login Bean...!");
+       login = new Login();
+      
    }
     
     
    public void SalvarLogin(Login login)
     {
+        try{
+            if(login != null)
         gestaoLogin.salvarLogin(login);
-           
+        
+        System.out.println(" Salvando com sucesso...!");
+        }catch(Exception ex){
+        
+            System.out.println(" Não consegue Salvar nullo...!"+ex);
+            
+        }finally{
+        
+         
+        }
     }
    
   public Login ConfereLogin(Login login)
   {
-    String nome = null;
-    
-    if(!login.getNome().equals(nome)){
-    
-        nome = login.getNome();
-    }
-          
        return login;
   } 
     
     
     public Login getLogin(){
     
+        if(login == null)
+            login = new Login();
         return login;
     }
     public void mostraLogado(Login login){
     
     }
     
-    /**
-     * @return the gestaoLogin
-     */
-    
-   
-    /**
-     * @param login the login to set
-     */
     
 }

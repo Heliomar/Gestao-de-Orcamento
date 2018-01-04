@@ -26,25 +26,22 @@ public class GestaoHemodinamicas implements Serializable {
     @Inject
      private HemodinamicasRepository hemodinamicas;
    
-    private Hemodinamica hemodinamica = null;
+    private Hemodinamica hemodinamica;
      
    
 	@Transacional
 	public void salvar(Hemodinamica hemodinamica) {
             
-            if (hemodinamica ==  null) {
-                hemodinamica = new Hemodinamica();
-                 hemodinamicas.guardarHemodinamica(hemodinamica);
+            if (hemodinamica !=  null) {
+               
+              hemodinamicas.guardarHemodinamica(hemodinamica);
             
               FacesMessage fm = new FacesMessage("Hemodinamica Com Sucesso..!");
             FacesContext.getCurrentInstance().addMessage("Hemodinamica", fm);
             
 	}else{
-                hemodinamicas.guardarHemodinamica(hemodinamica);
-                
-             FacesMessage fm = new FacesMessage("Hemodinamica sem Sucesso..!");
-            FacesContext.getCurrentInstance().addMessage("Hemodinamica", fm);
-
+               
+                System.out.println("Sem condição de salvar Hemodinamica NULL");
          }
                  
                  

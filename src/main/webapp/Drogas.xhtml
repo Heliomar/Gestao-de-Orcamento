@@ -20,8 +20,8 @@
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
                 
                 
-                                    <p:outputLabel value="Nome do Paciente" for="nome" class="ui-panelgrid"/>
-                                    <p:inputText id="nome" required="true" placeholder="nome" maxlength="25" value="#{gestaoDeUsuarioBean.usuario.nomePaciente}" />
+                                    <p:outputLabel value="Nome do Paciente" for="nomePaciente" class="ui-panelgrid"/>
+                                    <p:inputText id="nomePaciente" required="true" placeholder="nome" maxlength="25" value="#{gestaoDeUsuarioBean.usuario.nomePaciente}" />
                     
                                     <p:outputLabel value="Atendimento" for="atendimento" class="ui-panelgrid"/>
                                     <p:inputMask mask="9999999" id="atendimento" required="true" placeholder="atendimento" maxlength="7" value="#{gestaoDeUsuarioBean.usuario.atendimento}" />
@@ -86,7 +86,7 @@
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
             
-             <p:outputLabel value="Tipo da Droga" for="tipo" />
+                            <p:outputLabel value="Tipo da Droga" for="tipo" class="ui-panelgrid" />
 						<p:selectOneMenu id="tipo" >
 							<f:selectItem itemLabel="           " />
                                                         <f:selectItem itemLabel="Selecione" />
@@ -98,7 +98,9 @@
                                                         <f:selectItem itemLabel="Proporfol/50ML" itemValue="PRODUTO" />
                                                         <f:selectItem itemLabel="Fentanil/10ML" itemValue="PRODUTO" />
 						</p:selectOneMenu>
-        
+                            
+                            <p:outputLabel for="descricao" value="Descricao" class="ui-panelgrid"/>                            
+                            <p:inputText id="descricao" placeholder="Descricão" value="#{gestaoDeDrogasBean.drogas.descricao}"/>
        
     </p:panelGrid>
                                     
@@ -125,15 +127,14 @@
             <h:outputText id="Volume" value="volume " class="ui-panelgrid"/>
             <p:keyboard id="volume"  showMode="button"  keypadOnly="true" maxlength="3" required="true" value="#{gestaoDeDrogasBean.drogas.volume}"/>
         
-        <p:outputLabel value="Tipo do Soro" for="tipo" />
+            <p:outputLabel value="Tipo do Soro" for="tipo" class="ui-panelgrid" />
 						<p:selectOneMenu id="tipo" >
 							<f:selectItem itemLabel="            " />
                                                         <f:selectItem itemLabel="Selecione"/>
-							<f:selectItem itemLabel="Glicosado/250ML" itemValue="PRODUTO" />
-                                                        <f:selectItem itemLabel="Glicosado/500ML" itemValue="PRODUTO" />
-							<f:selectItem itemLabel="Fisiologico/500ML" itemValue="SERVICO" />
-                                                        <f:selectItem itemLabel="Fisiologico/250ML" itemValue="SERVICO" />
-                                                        <f:selectItem itemLabel="Ringer/500ML" itemValue="PRODUTO" />
+							<f:selectItem itemLabel="Glicosado" itemValue="PRODUTO" />                                                        
+							<f:selectItem itemLabel="Fisiologico" itemValue="SERVICO" />                                                        
+                                                        <f:selectItem itemLabel="Ringer" itemValue="PRODUTO" />
+                                                        <f:selectItem itemLabel="Glico/Fisio" itemValue="PRODUTO" />
 						</p:selectOneMenu>
        
 			

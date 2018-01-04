@@ -5,17 +5,13 @@
  */
 package com.algaworks.comercial.model.Dao;
 import java.io.Serializable;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-import javax.inject.Named;
+import javax.annotation.PostConstruct;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -26,7 +22,16 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name="login")
 public class Login implements Serializable {
     
+    
     public Login(){
+     }
+    
+    
+    public Login(Long Id_Login, String nome, String Senha){
+        this.Id_Login = Id_Login;
+        this.nome = nome;
+        this.Senha = Senha;        
+        System.out.println("Inicializando Objetos da classe de Login...!");
     }
     
     @Id

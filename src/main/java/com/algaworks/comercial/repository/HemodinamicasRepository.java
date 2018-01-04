@@ -16,39 +16,38 @@ import javax.persistence.EntityManager;
  *
  * @author Helio
  */
-public class HemodinamicasRepository implements Serializable{
-    
-     private static final long serialVersionUID = 1L;
+public class HemodinamicasRepository implements Serializable {
 
-	@Inject
-	private EntityManager manager;
-        
-        public HemodinamicasRepository(){
-                   
-        }
-	
-	public Hemodinamica guardarHemodinamica(Hemodinamica hemodinamica) {
-            
-               if (hemodinamica == null){
-                   hemodinamica = new Hemodinamica();
-                //manager.getTransaction().begin();
-                manager.persist(hemodinamica);
-                manager.flush();
-                FacesMessage fm = new FacesMessage("Hemodinamica Persiste com Sucesso..!");
+    private static final long serialVersionUID = 1L;
+
+    @Inject
+    private EntityManager manager;
+
+    public HemodinamicasRepository() {
+       this.manager = manager;
+       
+    }
+
+    public Hemodinamica guardarHemodinamica(Hemodinamica hemodinamica) {
+
+        if (hemodinamica != null) {
+
+            manager.persist(hemodinamica);
+            manager.flush();
+            FacesMessage fm = new FacesMessage("Hemodinamica Persiste com Sucesso..!");
             FacesContext.getCurrentInstance().addMessage("Hemodinamica", fm);
 
-                
-               }else{
-                      manager.persist(hemodinamica);
-                      manager.flush();
+        } else {
+            manager.persist(hemodinamica);
+            manager.flush();
             FacesMessage fm = new FacesMessage("Hemodinamica Não Persiste com Sucesso..!");
             FacesContext.getCurrentInstance().addMessage("Hemodinamica", fm);
 
-               }  
-            
-             manager.close();
-            
-            return  hemodinamica;
-	}
-    
+        }
+
+        manager.close();
+
+        return hemodinamica;
+    }
+
 }

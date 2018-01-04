@@ -11,6 +11,8 @@ import com.algaworks.comercial.model.Dto.TiposGanhos;
 import com.algaworks.comercial.service.GestaoGanhos;
 
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -23,7 +25,8 @@ import javax.inject.Named;
  * @author Helio
  */
 @Named
-@ViewScoped
+//@ViewScoped
+@SessionScoped
 public class GestaoDeGanhosBean implements Serializable{
     
     private static final long serialVersionUID = 1L;
@@ -31,13 +34,19 @@ public class GestaoDeGanhosBean implements Serializable{
     @Inject
     private GestaoGanhos gestaoGanhos;    
 
-    private Ganho ganho = new Ganho();
-    
+    private Ganho ganho;// = new Ganho();
     private TiposGanhos item;
-
     
+    @PostConstruct
+    public void Init(){
+    System.out.println("inicializando Ganhos Bean...!");
+    }
     
-    @SuppressWarnings("UnusedAssignment")
+    public  GestaoDeGanhosBean(){
+    ganho = new Ganho();
+    System.out.println("inicializando classe Ganhos....!");
+    }
+    
     public void salvaGanhos(Ganho ganho)
     {
         try{
@@ -46,7 +55,7 @@ public class GestaoDeGanhosBean implements Serializable{
         gestaoGanhos.SalvarGanhos(ganho);
 //  
         
-        FacesMessage msg = new FacesMessage("Gestão de  Ganhos com sucesso!");
+        FacesMessage msg = new FacesMessage("Gestão de  Ganhos Salvo com sucesso!");
         FacesContext.getCurrentInstance().addMessage("Ganhos", msg);
         
         }catch(Exception ex ){
@@ -69,26 +78,15 @@ public class GestaoDeGanhosBean implements Serializable{
     
     public void adicionarGanhos(){
     
-    ganho.getItens().add(item);//.addAll((Collection<? extends TiposGanhos>) item); //.add(item);
-    item.setGanho(ganho);//setGanho(ganho);
+    ganho.getItens().add(item);
+    item.setGanho(ganho);
     
     }
-   /**
-     * @return the ganho
-     */
-    
-    
+   
     public Ganho getGanho() {
         return ganho;
     }
-    
-    
-    /**
-     * @return the tipagem
-    
-    */
-    
-    
+  
     public TiposGanhos getItem() {
         
         return item;

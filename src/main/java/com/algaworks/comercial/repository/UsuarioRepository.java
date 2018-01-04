@@ -26,8 +26,7 @@ public class UsuarioRepository implements Serializable {
     private EntityManager manager;
 
     public Usuario guardarUsuario(Usuario usuario) {
-      String Usu = null;
-        
+      
          manager.persist(usuario);
           manager.flush();
         FacesMessage msg = new FacesMessage("Usuarios Persistido com sucesso!");

@@ -6,9 +6,13 @@
 package com.algaworks.comercial.controller;
 
 import com.algaworks.comercial.model.Dao.Drogas;
+import com.algaworks.comercial.model.Dao.Login;
 import com.algaworks.comercial.model.Dto.TipoItemDroga;
+import com.algaworks.comercial.relatorio.Relatorios;
 import com.algaworks.comercial.service.GestaoDrogas;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -32,9 +36,9 @@ public class GestaoDeDrogasBean implements Serializable{
     @Inject
     private GestaoDrogas gestaoDrogas;
     
-    private TipoItemDroga item; 
+    private TipoItemDroga item;     
+    private Drogas drogas;
     
-    private Drogas drogas;// = new Drogas();
     
     @PostConstruct
     public void Init(){
@@ -64,7 +68,7 @@ public class GestaoDeDrogasBean implements Serializable{
         gestaoDrogas.salvar(drogas);
         
         FacesMessage msg = new FacesMessage("Drogas salvas com sucesso!");
-		FacesContext.getCurrentInstance().addMessage(null, msg);
+	FacesContext.getCurrentInstance().addMessage("Drogas", msg);
     
     }
 
@@ -77,24 +81,18 @@ public class GestaoDeDrogasBean implements Serializable{
         return drogas;
     }
     
-    /**
-     * @param drogas the drogas to set
-     */
     public void setDrogas(Drogas drogas) {
         this.drogas = drogas;
     }
 
-    /**
-     * @return the item
-     */
     public TipoItemDroga getItem() {
         return item;
     }
 
-    /**
-     * @param item the item to set
-     */
+    
     public void setItem(TipoItemDroga item) {
         this.item = item;
     }
+    
+    
 }

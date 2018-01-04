@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.algaworks.comercial.controller;
 
 import com.algaworks.comercial.model.Dao.Perda;
 
 import com.algaworks.comercial.service.GestaoPerdas;
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -31,15 +27,18 @@ public class GestaoDePerdasBean implements Serializable {
     @Inject
     private GestaoPerdas gestaoPerdas;
     
+    public GestaoDePerdasBean(){
+    this.perda= new Perda();
+   // System.out.println("Inicializando variaveis de Perdas......!");
+    }
     
-     private Perda perda = new Perda();
+    @PostConstruct
+    public void Init(){
+   
+    }
+     private Perda perda;
      
-//     private Perda  perda;
-   // private PerdaItem itens;
- 
-   
-   
-    
+
     public void AdicionarPerda()
     {
          perda.getDiurese();
@@ -47,24 +46,23 @@ public class GestaoDePerdasBean implements Serializable {
     }
     public void salvarPerda(Perda perda)
     {
-     if (perda == null){
-         
-          perda = new Perda();          
-          gestaoPerdas.salvar(perda);
+     if (perda != null){
+       gestaoPerdas.salvar(perda);
                        
             FacesMessage msg = new FacesMessage("As Perdas salva com sucesso!");
-	    FacesContext.getCurrentInstance().addMessage(null, msg);
+	    FacesContext.getCurrentInstance().addMessage("Perdas", msg);
       }else{
-     
-          gestaoPerdas.salvar(perda);
-                       
-            FacesMessage msg = new FacesMessage("As Perdas salva com sucesso!");
-	    FacesContext.getCurrentInstance().addMessage(null, msg);
+          
+          
+            FacesMessage msg = new FacesMessage("As Perdas com Problemas em Salar.........!");
+	    FacesContext.getCurrentInstance().addMessage("Perdas", msg);
      }
 
     }
      public  Perda getPerda()
      {
+         if(perda == null)
+             perda = new Perda();
         return perda;
      }
 }
