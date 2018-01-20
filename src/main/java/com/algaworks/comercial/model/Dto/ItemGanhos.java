@@ -5,15 +5,12 @@
  */
 package com.algaworks.comercial.model.Dto;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-
 /**
  *
  * @author Helio
  */
-@ManagedBean
-@ViewScoped
+
+
 public enum ItemGanhos {
     
           ORAL("Oral"),
