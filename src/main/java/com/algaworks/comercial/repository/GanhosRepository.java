@@ -16,6 +16,7 @@ import javax.persistence.EntityManager;
  *
  * @author Helio
  */
+
 public class GanhosRepository implements Serializable{
  
     
@@ -24,14 +25,13 @@ public class GanhosRepository implements Serializable{
     
     public Ganho GuardaGanho(Ganho ganho )
     {
-    manager.persist(ganho);
     
     FacesMessage msg = new FacesMessage("Ganhos Persistindo com sucesso!");
     FacesContext.getCurrentInstance().addMessage("Drogas", msg);
     
-    manager.flush();
+   
         
-       return ganho;
+       return manager.merge(ganho);
     }
     
 }

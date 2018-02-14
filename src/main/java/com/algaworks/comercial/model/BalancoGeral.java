@@ -10,7 +10,6 @@ import com.algaworks.comercial.model.Dao.Drogas;
 import com.algaworks.comercial.model.Dao.Ganho;
 import com.algaworks.comercial.model.Dao.Login;
 import com.algaworks.comercial.model.Dao.Perda;
-import com.algaworks.comercial.relatorio.Relatorios;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

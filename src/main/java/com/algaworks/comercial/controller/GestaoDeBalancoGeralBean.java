@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.algaworks.comercial.controller;
 
+
+//import com.algaworks.comercial.ireport.ExecutorRelatorio;
 import com.algaworks.comercial.model.Dao.Login;
-import com.algaworks.comercial.relatorio.Relatorios;
+import com.algaworks.comercial.model.Dao.Usuario;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +16,12 @@ import javax.inject.Named;
  * @author Helio
  */
 
+/*
 @Named
 @SessionScoped
 public class GestaoDeBalancoGeralBean implements Serializable{
     
-      private List<Login> lista = new ArrayList<Login>();
+      private List<Usuario> lista = new ArrayList<Usuario>();
     
     
     @PostConstruct
@@ -31,13 +29,12 @@ public class GestaoDeBalancoGeralBean implements Serializable{
     System.out.println("Inicializando Balanco geral....!");
     }
     
-    public GestaoDeBalancoGeralBean(){        
+    public GestaoDeBalancoGeralBean(){  
+         System.out.println("Inicializando Classe Inicial Balanco geral....!");
     }
  
     
-    public void geraRelatoriosAction(){
-    
-        Relatorios relatorio = new Relatorios();
-        relatorio.getRelatorios(lista);
-    }
+   
 }
+
+*/

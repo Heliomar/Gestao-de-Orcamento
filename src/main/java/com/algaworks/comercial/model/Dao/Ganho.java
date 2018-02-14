@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.algaworks.comercial.model.Dao;
 
 import com.algaworks.comercial.model.Dto.TiposGanhos;
@@ -28,6 +23,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name ="ganho")
 public class Ganho implements Serializable{
       
+    
+     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

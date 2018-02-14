@@ -29,8 +29,7 @@ public class GestaoUsuario implements Serializable {
         }
         
         public GestaoUsuario(){
-        
-         
+        System.out.println("inicializando gestaoUsuario...!");
         }
         
 	

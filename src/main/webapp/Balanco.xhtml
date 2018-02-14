@@ -11,8 +11,8 @@
                 <p:messages autoUpdate="false" closable="true" />
 			
                 <h:form id="frm">
-                    <p:panelGrid id="capaPanel" columns="4" layout="grid"  
-					style="margin-top: 20px; margin-bottom: 40px"
+                    <p:panelGrid id="capaPanel" columns="4" 
+                                 style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
                 
@@ -31,7 +31,7 @@
                 </h:form> 
                 
                 <h:form id="form">
-                    <p:panelGrid id="capaPanel" columns="4" layout="grid"
+                    <p:panelGrid id="capaPanel" columns="4" 
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
@@ -53,7 +53,7 @@
                     <p:messages autoUpdate="false"  closable="true"/>
 			
 			<div class="ui-fluid">
-                            <p:panelGrid id="capaPanel" columns="4" layout="grid" 
+                            <p:panelGrid id="capaPanel" columns="4"  
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
@@ -88,7 +88,7 @@
                                         <p:commandButton class="Barra" value="Proximo" action="Ganhos.xhtml?faces-redirect=true"  ajax="false" />
                                         <p:commandButton class="Barra" value="Pesquizar Dados"/>
                                         <p:commandButton class="Barra" value="Selecionar Dados"/>
-                                        <p:commandButton class="Collorido" value="Relatorios" action="#{gestaoDeBalancoGeralBean.geraRelatoriosAction()}" ajax="false"/>
+                                        <p:commandButton class="Collorido" value="Relatorios" action="#{relatorioPedidosEmitidosBean.emitir()}" ajax="false"/>
 				</p:toolbarGroup>
 			</p:toolbar>
 			

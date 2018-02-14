@@ -21,7 +21,7 @@ public class GestaoGanhos implements Serializable {
     
      private static final long serialVersionUID = 1L;
     //private static final 
-    
+  
     @Inject
     private GanhosRepository ganhos;
     
@@ -29,11 +29,8 @@ public class GestaoGanhos implements Serializable {
     @Transacional
     public void SalvarGanhos(Ganho ganho)
     {
-    
-        if(ganho == null){
-        
-            ganho = new Ganho();
-            
+            if(ganho == null){       
+                       
             ganhos.GuardaGanho(ganho);
     
             FacesMessage msg = new FacesMessage("Gestao Ganhos Salvou com sucesso!");

@@ -5,8 +5,6 @@
  */
 package com.algaworks.comercial.repository;
 
-import com.algaworks.comercial.model.Dao.Login;
-import com.algaworks.comercial.model.Dao.Perda;
 import com.algaworks.comercial.model.Dao.Usuario;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;

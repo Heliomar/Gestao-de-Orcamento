@@ -26,17 +26,21 @@ public class LoginRepositary implements Serializable{
     
    
     
-     public void  guardarLogin(Login login){
+     public Login  guardarLogin(Login login){
         
          if(login != null){
              
            manager.persist(login);
-         
+           
           FacesMessage fm = new FacesMessage("Login Persiste com Sucesso..!");
             FacesContext.getCurrentInstance().addMessage("Login", fm);
+           
+            manager.close();
          }
          //manager.getTransaction().commit();
-          // manager.merge(login);
-        manager.flush();
+        
+         return manager.merge(login);
+       
+        
         }
 }

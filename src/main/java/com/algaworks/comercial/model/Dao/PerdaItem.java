@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.algaworks.comercial.model.Dao;
 
 import java.io.Serializable;
@@ -25,6 +20,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name = "perda_Item")
 public class PerdaItem implements Serializable{
     
+    
+     private static final long serialVersionUID = 1L;
+     
     public PerdaItem(){
     }
     
@@ -43,21 +41,22 @@ public class PerdaItem implements Serializable{
 	@NotNull
 	private String volume;
 	
+        //@JoinColumn(name="perda")
 	@ManyToOne
 	private Perda perda;
 
-    /**
-     * @return the id
-     */
-    public Integer getId() {
+    
+        
+        
+    public Integer getId_Item() {
         return Id_Item;
     }
 
     /**
-     * @param Id the id to set
+     * @param Id_Item the Id_Item to set
      */
-    public void setId(Integer Id) {
-        this.Id_Item = Id;
+    public void setId_Item(Integer Id_Item) {
+        this.Id_Item = Id_Item;
     }
 
     /**
@@ -115,31 +114,5 @@ public class PerdaItem implements Serializable{
     public void setPerda(Perda perda) {
         this.perda = perda;
     }
-
-    
-@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((Id_Item == null) ? 0 : Id_Item.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		PerdaItem other = (PerdaItem) obj;
-		if (Id_Item == null) {
-			if (other.Id_Item != null)
-				return false;
-		} else if (!Id_Item.equals(other.Id_Item))
-			return false;
-		return true;
-	}
     
 }

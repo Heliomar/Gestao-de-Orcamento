@@ -29,6 +29,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name = "perda")
 public class Perda implements Serializable{
     
+     private static final long serialVersionUID = 1L;
+    
     public Perda(){
      }
     

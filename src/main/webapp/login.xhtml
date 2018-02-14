@@ -107,14 +107,14 @@ span.psw {
      </p:messages>
   <div class="container">
     <label><b>Nome</b></label>
-    <input class="entrada" for="nome" type="text" id="nome" requered="true" placeholder="Nome" name="nome" required="true" value="#{gestaoDeLoginBean.login.nome}"/>
+    <input class="entrada" for="nome" type="text" id="nome" placeholder="Nome"  required="true" value="#{gestaoDeLoginBean.login.nome}"/>
     <p></p>
 
     <label><b>Senha</b></label>
-    <input type="password" for="senha" id="Senha"  requered="true" placeholder="Enter Senha" name="senha" required="true" value="#{gestaoDeLoginBean.login.senha}"/>
+    <input type="password" for="senha" id="senha" required="true" placeholder="Enter Senha" value="#{gestaoDeLoginBean.login.senha}"/>
         <p></p>
         <div class="logar">
-            <button type="submit" action="#{gestaoDeLoginBean.SalvarLogin(login)}" onclick="Hemodinamica.xhtml?faces-redirect=true" >Login</button>
+            <button type="submit" ajax="true" action="#{gestaoDeLoginBean.SalvarLogin(login)}" onclick="Hemodinamica.xhtml?faces-redirect=true" >Login</button>
     
     <input type="checkbox" checked="checked"/> Lembre-me
        </div>

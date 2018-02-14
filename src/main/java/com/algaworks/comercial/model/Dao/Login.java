@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.algaworks.comercial.model.Dao;
 import java.io.Serializable;
-import javax.annotation.PostConstruct;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,31 +17,33 @@ import javax.persistence.Table;
 public class Login implements Serializable {
     
     
+     private static final long serialVersionUID = 1L;
+     
+     
     public Login(){
      }
     
     
-    public Login(Long Id_Login, String nome, String Senha){
-        this.Id_Login = Id_Login;
+    public Login( String nome, String Senha){
         this.nome = nome;
-        this.Senha = Senha;        
+        this.senha = Senha;        
         System.out.println("Inicializando Objetos da classe de Login...!");
     }
     
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id_Login;
     
     
+    
    
-   
-    @Column(name="nome")
+    @Column(name="nome" , nullable = false)
     private String nome;
     
   
    
-    @Column(name="senha")
-    private String  Senha;
+    @Column(name="senha" , nullable = false)
+    private String  senha;
 
     /**
      * @return the Id_login
@@ -60,9 +56,29 @@ public class Login implements Serializable {
      * @return the nome
      */
     public String getNome() {
+       
+           
         return nome;
     }
 
+    /**
+     * @return the Id_Login
+     */
+    public Long getId_Login() {
+        return Id_Login;
+    }
+
+    /**
+     * @param Id_Login the Id_Login to set
+     */
+    public void setId_Login(Long Id_Login) {
+        this.Id_Login = Id_Login;
+    }
+
+    /**
+     * @return the nome
+     */
+   
     /**
      * @param nome the nome to set
      */
@@ -71,17 +87,17 @@ public class Login implements Serializable {
     }
 
     /**
-     * @return the Senha
+     * @return the senha
      */
     public String getSenha() {
-        return Senha;
+        return senha;
     }
 
     /**
-     * @param Senha the Senha to set
+     * @param senha the senha to set
      */
-    public void setSenha(String Senha) {
-        this.Senha = Senha;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
-    
+
 }

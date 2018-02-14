@@ -18,7 +18,7 @@
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>5.3</version>
+			<version>5.0</version>
 		</dependency>
 		<!-- Spring Security (autenticação e segurança)-->
                 
@@ -52,13 +52,18 @@
 			<artifactId>javax.faces</artifactId>
 			<version>2.2.14</version>
 			<scope>compile</scope>
-		</dependency>
-
-		<dependency>
+                </dependency>
+                <dependency>
+                    <groupId>org.jboss</groupId>
+                    <artifactId>jandex</artifactId>
+                    <version>2.0.4.Final</version>
+                    <scope>compile</scope>
+                </dependency>
+                <dependency>
 			<groupId>org.jboss.weld.servlet</groupId>
 			<artifactId>weld-servlet</artifactId>
-			<version>2.4.1.Final</version>
-			<scope>compile</scope>
+			<version>2.4.6.Final</version>
+		 <type>jar</type>
 		</dependency>
 
 		<dependency>
@@ -72,7 +77,7 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>5.2.4.Final</version>
-			<scope>compile</scope>
+		 <type>jar</type>
 		</dependency>
 		
 		<dependency>
@@ -95,29 +100,36 @@
 			<scope>provided</scope>
 		</dependency>
 	 <dependency>
-	  <groupId>javax.validation</groupId>
-	  <artifactId>validation-api</artifactId>
-	  <version>1.1.0.Final</version>
+             <groupId>javax.validation</groupId>
+             <artifactId>validation-api</artifactId>
+             <version>1.1.0.Final</version>
+             <type>jar</type>
+         </dependency>
+         <dependency>
+             <groupId>net.sf.jasperreports</groupId>
+             <artifactId>jasperreports</artifactId>
+             <version>6.5.0</version>
+             <type>jar</type>
+         </dependency>
+         <dependency>
+             <groupId>javax.enterprise</groupId>
+             <artifactId>cdi-api</artifactId>
+             <version>1.1</version>
+             <type>jar</type>
+         </dependency>
+	 <dependency>
+	  <groupId>org.hibernate.javax.persistence</groupId>
+	  <artifactId>hibernate-jpa-2.0-api</artifactId>
+	  <version>1.0.1.Final</version>
 	  <type>jar</type>
 	 </dependency>
 	 <dependency>
-	  <groupId>net.sf.jasperreports</groupId>
-	  <artifactId>jasperreports</artifactId>
-	  <version>6.4.0</version>
+             <groupId>javax</groupId>
+             <artifactId>javaee-web-api</artifactId>
+             <version>7.0</version>
 	  <type>jar</type>
 	 </dependency>
-	 <dependency>
-	  <groupId>javax.enterprise</groupId>
-	  <artifactId>cdi-api</artifactId>
-	  <version>1.1</version>
-	  <type>jar</type>
-	 </dependency>
-	 <dependency>
-	  <groupId>javax</groupId>
-	  <artifactId>javaee-web-api</artifactId>
-	  <version>7.0</version>
-	 </dependency>
-	</dependencies>
+        </dependencies>
 
 	<build>
 		<plugins>

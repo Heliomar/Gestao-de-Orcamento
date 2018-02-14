@@ -20,13 +20,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 
-/**
- *
- * @author Helio
- */
+@ViewScoped
 @Named
-//@ViewScoped
-@SessionScoped
 public class GestaoDeGanhosBean implements Serializable{
     
     private static final long serialVersionUID = 1L;
@@ -50,8 +45,8 @@ public class GestaoDeGanhosBean implements Serializable{
     public void salvaGanhos(Ganho ganho)
     {
         try{
-            if(ganho == null)
-                ganho = new Ganho();
+            if(ganho != null)
+                
         gestaoGanhos.SalvarGanhos(ganho);
 //  
         
