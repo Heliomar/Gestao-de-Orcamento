@@ -32,33 +32,44 @@ public class GestaoDeUsuarioBean implements Serializable {
     private Usuario usuario;
     private Login login;
 
+    @Inject
     public GestaoDeUsuarioBean() {
-        usuario = new Usuario();
-        login = new Login();
-        System.out.println("inicializando classe Usuario e Login Bean...!");
-    }
+        this.gestaoUsuario = gestaoUsuario;
+       }
 
     @PostConstruct
     public void Init() {
-        this.gestaoUsuario = gestaoUsuario;
-        System.out.println("inicialização Gestão de Usuario....!");
-    }
+     }
 
     public void SalvarUsuario(Usuario usuario) {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        sessionFactory.openSession().beginTransaction();
+        
+          if(!sessionFactory.openSession().beginTransaction().isActive())
+              
+                sessionFactory.openSession().beginTransaction().begin();
         try {
+            
             if (usuario != null) {
-                gestaoUsuario.salvar(usuario);
+                sessionFactory.openSession().save(usuario);
+                this.gestaoUsuario.salvar(usuario);
+                //sessionFactory.unwrap(usuario.getClass());
+                sessionFactory.openSession().close();
+                //sessionFactory.openSession().flush();
+                System.out.println("Usuario salvo com Sucesso....!");
             }
 
             FacesMessage msg = new FacesMessage("Usuarios salvo com sucesso....!");
-            FacesContext.getCurrentInstance().addMessage("Usuario", msg);
-
+            FacesContext.getCurrentInstance().addMessage("Hemodinamica", msg);
+        
         } catch (Exception ex) {
-
+        
             System.out.println("Problemas na salvação..!" + ex);
+        }finally{
+        
+           
+         System.out.println(" finalizando Sessâo com usuario....!");
         }
+     
     }
 
     /**
@@ -66,9 +77,9 @@ public class GestaoDeUsuarioBean implements Serializable {
      */
     public Usuario getUsuario() {
 
-        if (usuario == null) {
+        if (usuario == null) 
             usuario = new Usuario();
-        }
+        
         return usuario;
     }
 

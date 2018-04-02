@@ -5,6 +5,7 @@ import com.algaworks.comercial.model.Dao.Drogas;
 import com.algaworks.comercial.repository.DrogasRepository;
 import com.algaworks.comercial.util.Transacional;
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -24,11 +25,10 @@ public class GestaoDrogas implements Serializable {
     private Drogas drogas;
 
     public GestaoDrogas() {
-        this.drogas = drogas;
-    }
-
+      }
+    
+    @PostConstruct
     public void Init() {
-
         System.out.println("nicializando Gestao drogas..........!");
     }
 
@@ -39,7 +39,7 @@ public class GestaoDrogas implements Serializable {
         session.openSession().save(drogas);
 
         if (drogas != null) {
-            drogarias.guardarDrogas(drogas);
+         drogas = drogarias.guardarDrogas(drogas);
 
             FacesMessage msg = new FacesMessage("Drogas Salvas com sucesso....!");
             FacesContext.getCurrentInstance().addMessage("Drogas", msg);

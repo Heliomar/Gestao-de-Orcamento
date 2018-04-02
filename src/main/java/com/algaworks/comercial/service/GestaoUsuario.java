@@ -7,6 +7,7 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.New;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
@@ -14,6 +15,7 @@ import javax.inject.Inject;
  *
  * @author Helio
  */
+
 public class GestaoUsuario implements Serializable {
     
     private static final long serialVersionUID = 1L;
@@ -24,12 +26,11 @@ public class GestaoUsuario implements Serializable {
         
         @PostConstruct
         public void Init(){
-           this.usuarios = this.usuarios;
-        
+         
         }
         
+        @Inject
         public GestaoUsuario(){
-        System.out.println("inicializando gestaoUsuario...!");
         }
         
 	
@@ -49,11 +50,7 @@ public class GestaoUsuario implements Serializable {
                     
                     System.out.println("Gestão Usuario nao salvo....!"+ex);
                     
-            }finally{
-            
-             System.out.println("Gestao finalizando dados....");
             }
-            
 	}
         
 }

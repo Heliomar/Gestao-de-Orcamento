@@ -34,7 +34,7 @@ public class GestaoGanhos implements Serializable {
             ganhos.GuardaGanho(ganho);
     
             FacesMessage msg = new FacesMessage("Gestao Ganhos Salvou com sucesso!");
-	    FacesContext.getCurrentInstance().addMessage("Drogas", msg);
+	    FacesContext.getCurrentInstance().addMessage("Ganho", msg);
     
         }else{
         

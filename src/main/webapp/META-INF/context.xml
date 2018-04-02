@@ -2,4 +2,5 @@
 <Context path="/gestao-orcamentos">
   <Manager pathname=""/>
   <Resource auth="Container" factory="org.jboss.weld.resources.ManagerObjectFactory" name="BeanManager" type="javax.enterprise.inject.spi.BeanManager"/>
+  <Resource auth="Container" driverClassName="com.mysql.jdbc.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="enfermagem" password="helio" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/conferenciaenfermagem" username="root"/>
 </Context>

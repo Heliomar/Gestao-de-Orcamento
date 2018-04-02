@@ -3,6 +3,7 @@ package com.algaworks.comercial.controller;
 import com.algaworks.comercial.Hibernate.HibernateUtil;
 import com.algaworks.comercial.model.Dao.Hemodinamica;
 import com.algaworks.comercial.service.GestaoHemodinamicas;
+import com.algaworks.comercial.util.Transacional;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
@@ -15,17 +16,22 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletResponse;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 /**
  *
  * @author Helio
  */
 @Named
-@ViewScoped
-//@SessionScoped
+//@ViewScoped
+@ManagedBean
+@SessionScoped
 public class GestaoDeHemodinamicaBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
+    
+    private Hemodinamica hemodinamica;
 
     @Inject
     private FacesContext facesContext;
@@ -39,46 +45,51 @@ public class GestaoDeHemodinamicaBean implements Serializable {
     @Inject
     private GestaoHemodinamicas gestaoHemodinamica;
 
-    private Hemodinamica hemodinamica;
-
+    
     public GestaoDeHemodinamicaBean() {
-
-        hemodinamica = new Hemodinamica();
-        System.out.println("inicializando classe Hemodinamica Bean...!");
+       hemodinamica = new Hemodinamica();
+      
     }
 
-    @PostConstruct
-    public void Init() {
-        System.out.println(" Inicializando....Gestao de Hemodinamica...!");
-    }
-
+   
+     
     public void salvarHemodinamica(Hemodinamica hemodinamica) {
-        SessionFactory session = HibernateUtil.getSessionFactory();
-        session.openSession().beginTransaction();
-
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         try {
-
+            
             if (hemodinamica != null) {
+               sessionFactory.openSession().save(hemodinamica);
+                this.gestaoHemodinamica.salvar(hemodinamica);
+                //sessionFactory.unwrap(usuario.getClass());
+                //sessionFactory.close();
+                sessionFactory.openSession().close();
                 gestaoHemodinamica.salvar(hemodinamica);
-            }
-            FacesMessage msg = new FacesMessage("Hemodinamica salvas com sucesso....!");
-            FacesContext.getCurrentInstance().addMessage("Hemodinamica", msg);
 
-                //session.openSession().save(hemodinamica);
-            //session.close();
+                FacesMessage msg = new FacesMessage("Hemodinamica salvas com sucesso....!");
+                FacesContext.getCurrentInstance().addMessage("Hemodinamica", msg);
+
+            } else {
+
+                System.out.println("hemodinamica nulas...!");
+            }
+
         } catch (Exception ex) {
 
             System.out.println(" nao salvou comm certeza.." + ex);
+        }finally{
+            
+             System.out.println(" fechando conexao comm certeza..");
+           
+        
         }
 
     }
 
-    public Hemodinamica getHemodinamica() {
-        if (hemodinamica == null) {
+    @SuppressWarnings("InfiniteRecursion")
+   public Hemodinamica getHemodinamica(){
+         if(hemodinamica == null)
             hemodinamica = new Hemodinamica();
-        }
-
-        return hemodinamica;
-    }
+       return hemodinamica;
+   }
 
 }

@@ -8,7 +8,7 @@
 	<ui:define name="content">
 		<h1 class="aw-page-title">Ganhos do Paciente</h1>
                 
-                 <p:messages autoUpdate="false" closable="true" />
+                 
                 
 		<h:form id="frm">
 			
@@ -19,9 +19,9 @@
 				</p:toolbarGroup>
 			
                    
+			<p:messages autoUpdate="false" closable="true" />
 			
-			
-                            <p:panelGrid id="capaPanel" columns="4" layout="grid" 
+                            <p:panelGrid id="capaPanel" columns="4" 
 					style="margin-top: 20px; margin-bottom: 40px"
 					styleClass="panelgrid-noborder"
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
@@ -135,7 +135,7 @@
 			 process="@this capaPanel" update="@form" />
                         <p:commandButton value="Proximo" action="Drogas.xhtml?faces-redirect=true" ajax="false" class="ui-panelgrid"/>
 			
-                        <p:commandButton value="Salvar Ganhos" action="#{gestaoDeGanhosBean.salvaGanhos(ganho)}"/>
+                        <p:commandButton value="Salvar Ganhos"  process="@this capaPanel" action="#{gestaoDeGanhosBean.salvaGanhos(ganho)}"/>
                         
 		
                  </h:form>

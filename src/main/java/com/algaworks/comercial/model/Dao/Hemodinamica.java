@@ -1,70 +1,73 @@
 package com.algaworks.comercial.model.Dao;
-
-
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
-
 
 
 @Entity
 @Table(name = "hemodinamica")
 public class Hemodinamica implements Serializable{
-    
-     private static final long serialVersionUID = 1L;
-    
-    public Hemodinamica(){
-    }
-   
-    @Id
-    @Column(name="Id_Hemodinamica")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id_Hemodinamica;
-    
-    
-    @Column(name="PressaoA")
-    private String PressaoA;
-   
-    
-    @Column(name="PressaoAM")
-    private String PressaoAMedia;
-   
-   
-    @Column(name="frequencia")
-    private String Frequencia;
-   
-   
-    @Column(name="FrequenciaCardio")
-    private String FrequenciaCardio;
-   
-   
-    @Column(name="temperatura")
-    private String Temperatura;
-   
-  
-    @Column(name="saturacao")
-    private String Saturacao;
-   
-   
-    @Column(name="HemoGt")
-    private String HemoGT;
-   
 
-    @Column(name="Pia")
+    private static final long serialVersionUID = 1L;
+
+    public Hemodinamica() {
+    }
+
+ 
+    public Hemodinamica(String PressaoA,String PressaoAMedia,String FrequenciaRespir,String FrequenciaCardio,String Temperatura,
+            String Saturacao,String HemoGT,String Pia,String Pvc) { 
+        this.PressaoA = PressaoA;
+        this.PressaoAMedia = PressaoAMedia;
+        this.FrequenciaRespir = FrequenciaRespir;
+        this.FrequenciaCardio = FrequenciaCardio;
+        this.Temperatura = Temperatura;
+        this.Saturacao = Saturacao;
+        this.HemoGT =HemoGT;
+        this.Pia = Pia;
+        this.Pvc = Pvc;
+    }
+    
+    private Long Id_Hemodinamica;
+    private String PressaoA;
+    private String PressaoAMedia;
+    private String FrequenciaRespir;
+    private String FrequenciaCardio;
+    private String Temperatura;
+    private String Saturacao;
+    private String HemoGT;
     private String Pia;
-   
-   
-    @Column(name="Pvc")
     private String Pvc;
+
+    /**
+     * @return the Id_Hemodinamica
+     */
+    @Id
+    @Column(name = "Id_Hemodinamica")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId_Hemodinamica() {
+        return Id_Hemodinamica;
+    }
+
+    /**
+     * @param Id_Hemodinamica the Id_Hemodinamica to set
+     */
+    public void setId_Hemodinamica(Long Id_Hemodinamica) {
+        this.Id_Hemodinamica = Id_Hemodinamica;
+    }
 
     /**
      * @return the PressaoA
      */
+    @NotNull
+    @Column(name = "pressaoA", nullable = false)
     public String getPressaoA() {
         return PressaoA;
     }
@@ -79,6 +82,8 @@ public class Hemodinamica implements Serializable{
     /**
      * @return the PressaoAMedia
      */
+    @NotNull
+    @Column(name = "PressaoAM", nullable= false)
     public String getPressaoAMedia() {
         return PressaoAMedia;
     }
@@ -91,22 +96,26 @@ public class Hemodinamica implements Serializable{
     }
 
     /**
-     * @return the Frequencia
+     * @return the FrequenciaRespir
      */
-    public String getFrequencia() {
-        return Frequencia;
+     @NotNull
+    @Column(name = "frequenciaRespir", nullable = false)
+    public String getFrequenciaRespir() {
+        return FrequenciaRespir;
     }
 
     /**
-     * @param Frequencia the Frequencia to set
+     * @param FrequenciaRespir the FrequenciaRespir to set
      */
-    public void setFrequencia(String Frequencia) {
-        this.Frequencia = Frequencia;
+    public void setFrequenciaRespir(String FrequenciaRespir) {
+        this.FrequenciaRespir = FrequenciaRespir;
     }
 
     /**
      * @return the FrequenciaCardio
      */
+     @NotNull
+    @Column(name = "frequenciaCardio", nullable = false)
     public String getFrequenciaCardio() {
         return FrequenciaCardio;
     }
@@ -121,6 +130,8 @@ public class Hemodinamica implements Serializable{
     /**
      * @return the Temperatura
      */
+     @NotNull
+    @Column(name = "temperatura", nullable = false)
     public String getTemperatura() {
         return Temperatura;
     }
@@ -135,6 +146,8 @@ public class Hemodinamica implements Serializable{
     /**
      * @return the Saturacao
      */
+     @NotNull
+    @Column(name = "saturacao" ,nullable = false)
     public String getSaturacao() {
         return Saturacao;
     }
@@ -149,6 +162,8 @@ public class Hemodinamica implements Serializable{
     /**
      * @return the HemoGT
      */
+    @NotNull
+    @Column(name = "hemoGt" , nullable = false)
     public String getHemoGT() {
         return HemoGT;
     }
@@ -163,6 +178,8 @@ public class Hemodinamica implements Serializable{
     /**
      * @return the Pia
      */
+    @NotNull
+    @Column(name = "pia", nullable = false)
     public String getPia() {
         return Pia;
     }
@@ -177,6 +194,9 @@ public class Hemodinamica implements Serializable{
     /**
      * @return the Pvc
      */
+    
+    @NotNull
+    @Column(name = "pvc", nullable = false)
     public String getPvc() {
         return Pvc;
     }
@@ -187,20 +207,29 @@ public class Hemodinamica implements Serializable{
     public void setPvc(String Pvc) {
         this.Pvc = Pvc;
     }
+@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Id_Hemodinamica == null) ? 0 : Id_Hemodinamica.hashCode());
+		return result;
+	}
 
-    /**
-     * @return the Id_Hemodinamica
-     */
-    public Long getId_Hemodinamica() {
-        return Id_Hemodinamica;
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Hemodinamica other = (Hemodinamica) obj;
+		if (Id_Hemodinamica == null) {
+			if (other.Id_Hemodinamica != null)
+				return false;
+		} else if (!Id_Hemodinamica.equals(other.Id_Hemodinamica))
+			return false;
+		return true;
+	}
 
-    /**
-     * @param Id_Hemodinamica the Id_Hemodinamica to set
-     */
-    public void setId_Hemodinamica(Long Id_Hemodinamica) {
-        this.Id_Hemodinamica = Id_Hemodinamica;
-    }
-    
-    
 }

@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.algaworks.comercial.repository;
 
 import com.algaworks.comercial.model.Dao.Login;
 import java.io.Serializable;
+import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -29,13 +26,15 @@ public class LoginRepositary implements Serializable{
      public Login  guardarLogin(Login login){
         
          if(login != null){
-             
+          
            manager.persist(login);
-           
-          FacesMessage fm = new FacesMessage("Login Persiste com Sucesso..!");
+           manager.getTransaction().commit();
+           FacesMessage fm = new FacesMessage("Login Persiste com Sucesso..!");
             FacesContext.getCurrentInstance().addMessage("Login", fm);
+            
+            System.out.println("  Persiste com acesso a login....!.Obrigado.!");
            
-            manager.close();
+           // manager.close();
          }
          //manager.getTransaction().commit();
         
@@ -43,4 +42,8 @@ public class LoginRepositary implements Serializable{
        
         
         }
+     public Login porId(Long Id_Login) {
+		return this.manager.find(Login.class, Id_Login);
+	}
+	
 }

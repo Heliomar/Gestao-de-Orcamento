@@ -7,11 +7,11 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/conferenciaenfermagem</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">helio</property>
-    <property name="hibernate.connection.pool_size">2</property>
     <property name="hibernate.connection.autocommit">true</property>
     <property name="hibernate.format_sql">true</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
+    
     <mapping class="com.algaworks.comercial.model.Dao.Hemodinamica"/>
     <mapping class="com.algaworks.comercial.model.Dao.Login"/>
     <mapping class="com.algaworks.comercial.model.Dao.Ganho"/>

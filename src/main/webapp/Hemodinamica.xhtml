@@ -23,10 +23,10 @@
                                     <p:inputText id="nomePaciente" required="true" placeholder="nome" maxlength="25" value="#{gestaoDeUsuarioBean.usuario.nomePaciente}" />
                     
                     <p:outputLabel value="Atendimento" for="atendimento" class="ui-panelgrid"/>
-                    <p:inputMask mask="9999999" id="atendimento" required="true" placeholder="atendimento" maxlength="7" value="#{gestaoDeUsuarioBean.usuario.atendimento}" />
+                    <p:inputMask id="atendimento" required="true" mask="9999999"  placeholder="atendimento" maxlength="7" value="#{gestaoDeUsuarioBean.usuario.atendimento}" />
                     
                     <p:outputLabel value="Leito do Paciente" for="Leito" class="ui-panelgrid"/>
-                    <p:inputMask mask="999"  placeholder="leito" maxlength="3" required="true" id="Leito" value="#{gestaoDeUsuarioBean.usuario.leito}" />
+                    <p:inputMask id="Leito" mask="999"  placeholder="leito" maxlength="3" required="true"  value="#{gestaoDeUsuarioBean.usuario.leito}" />
                     
                               </p:panelGrid>
                                     </h:form> 
@@ -59,8 +59,7 @@
 			</p:toolbar>
 			
 			
-                    <p:messages autoUpdate="false" closable="true"/>
-			
+                    
 			<div class="ui-fluid">
                             <p:panelGrid id="capaPanel" columns="3" rendererType="grid"
 					style="margin-top: 20px; margin-bottom: 40px"
@@ -76,9 +75,6 @@
 				
                 <h:form id="frm7">
                    
-                        
-       
-                    <p:messages autoUpdate="false" closable="true" />
                     
                      <h:panelGroup>            
      
@@ -88,31 +84,31 @@
 					columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4">
         
                              <h:outputText value="PressaoA" class="ui-panelgrid"/>
-                             <p:keyboard id="buttonmPressaoA" placeholder="Pressao Arterial" showMode="button"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.pressaoA}" maxlength="3"/>
+                             <p:keyboard id="PressaoA"  placeholder="Pressao Arterial" showMode="button"  maxlength="3" keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.pressaoA}"/>
         
         <h:outputText value="PAM: "  class="ui-panelgrid"/>
-        <p:keyboard id="buttonmodePAM"  showMode="button" maxlength="2"  keypadOnly="true" placeholder="PAM" value="#{gestaoDeHemodinamicaBean.hemodinamica.pressaoAMedia}"/>
+        <p:keyboard id="PAM"  showMode="button" maxlength="3"  keypadOnly="true" placeholder="PAM" value="#{gestaoDeHemodinamicaBean.hemodinamica.pressaoAMedia}"/>
         
         <h:outputText value="Frequencia Respiratória: " class="ui-panelgrid" />
-        <p:keyboard id="buttonmodeRespriratoria"  maxlength="3" showMode="button" placeholder="Frequencia Respiratória"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.frequencia}"/>
+        <p:keyboard id="frequenciaRespir"  maxlength="3" showMode="button" placeholder="Frequencia Respiratória"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.frequenciaRespir}"/>
         
              <h:outputText value="Frequencia Cardiaca: " class="ui-panelgrid" />
-             <p:keyboard id="buttonmodeCardiaca"  maxlength="2" showMode="button" placeholder="Frequencia Cardiaca"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.frequenciaCardio}"/>
+             <p:keyboard id="frequenciaCardiaca"  maxlength="3" showMode="button" placeholder="Frequencia Cardiaca"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.frequenciaCardio}"/>
         
               <h:outputText value="Temperatura: " class="ui-panelgrid"/>
-              <p:keyboard id="buttonmodeTemperatura"  maxlength="2" showMode="button" placeholder="Temperatura"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.temperatura}" />
+              <p:keyboard id="Temperatura"  maxlength="3" showMode="button" placeholder="Temperatura"  keypadOnly="true" value="#{gestaoDeHemodinamicaBean.hemodinamica.temperatura}" />
         
-              <h:outputText value="SPO²: " class="ui-panelgrid" />
-              <p:keyboard id="buttonmodeSPO"  maxlength="3" showMode="button"  keypadOnly="true" placeholder="SPO²" value="#{gestaoDeHemodinamicaBean.hemodinamica.saturacao}" />
+              <h:outputText value="SPO²: " id="SPO"  class="ui-panelgrid" />
+              <p:keyboard id="SPO"  maxlength="3" showMode="button"  keypadOnly="true" placeholder="SPO²" value="#{gestaoDeHemodinamicaBean.hemodinamica.saturacao}" />
         
               <h:outputText value="HGT: " class="ui-panelgrid" />
-              <p:keyboard id="buttonmodeHGT"  maxlength="3" showMode="button"  keypadOnly="true" placeholder="HGT" value="#{gestaoDeHemodinamicaBean.hemodinamica.hemoGT}" />
+              <p:keyboard id="HGT"  maxlength="3" showMode="button" required="true" keypadOnly="true" placeholder="HGT" value="#{gestaoDeHemodinamicaBean.hemodinamica.hemoGT}" />
         
               <h:outputText value="PIA: " class="ui-panelgrid" />
-              <p:keyboard id="buttonmodePia"  maxlength="2" showMode="button"  keypadOnly="true" placeholder="PIA"  value="#{gestaoDeHemodinamicaBean.hemodinamica.pia}"/>
+              <p:keyboard id="Pia"  maxlength="3" showMode="button" required="true" keypadOnly="true" placeholder="PIA"  value="#{gestaoDeHemodinamicaBean.hemodinamica.pia}"/>
         
         <h:outputText value="PVC: "  class="ui-panelgrid"/>
-        <p:keyboard id="buttonmodePvc"  maxlength="3" showMode="button"  keypadOnly="true" placeholder="PVC" value="#{gestaoDeHemodinamicaBean.hemodinamica.pvc}"/>
+        <p:keyboard id="Pvc"  maxlength="3" showMode="button" required="true" keypadOnly="true" placeholder="PVC" value="#{gestaoDeHemodinamicaBean.hemodinamica.pvc}"/>
         
     </p:panelGrid>
                                     

@@ -20,40 +20,33 @@ import javax.persistence.Table;
  *
  * @author Helio
  */
-
+//@ManagedBean
 //@ViewScoped
 @Entity
-//@ManagedBean
 @Table(name="drogas")
 public class Drogas implements Serializable {
     
     
-     private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L;
      
     public Drogas(){
     }
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="Id_drogas",nullable=false)
+    public Drogas(Long id_Dorgas, String descricao, String Volume,TipoItem tipo, String nomeDroga){
+    this.id_Drogas=  id_Drogas;
+    this.descricao = descricao;
+    this.Volume = Volume;
+    this.tipo= tipo;
+    this.nomeDroga = nomeDroga;
+    }
+    
+    
     private Long id_Drogas;
-    
-   
-    @Column(name="descricao")
     private String descricao;
-
-    
-    @Column(name="volume")
     private String Volume;
-    
-    
-    @Enumerated(EnumType.STRING)
     private TipoItem tipo;  
+    private String nomeDroga;
     
-  
-    
-    @Column(name="NomeDroga")
-    private String NomeDroga; 
     
     @OneToMany(mappedBy = "drogas", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TipoItemDroga> Item  = new ArrayList();
@@ -61,6 +54,7 @@ public class Drogas implements Serializable {
     /**
      * @return the Volume
      */
+    @Column(name="volume", nullable = false)
     public String getVolume() {
         return Volume;
     }
@@ -80,15 +74,16 @@ public class Drogas implements Serializable {
     /**
      * @return the NomeDdroga
      */
+    @Column(name="volume", nullable = false)
     public String getNomeDroga() {
-        return NomeDroga;
+        return nomeDroga;
     }
 
     /**
-     * @param NomeDroga the NomeDdroga to set
+     * @param nomeDroga the NomeDdroga to set
      */
-    public void setNomeDroga(String NomeDroga) {
-        this.NomeDroga = NomeDroga;
+    public void setNomeDroga(String nomeDroga) {
+        this.nomeDroga = nomeDroga;
     }
 
     /**
@@ -102,6 +97,7 @@ public class Drogas implements Serializable {
     /**
      * @return the descricao
      */
+    @Column(name="descricao", nullable = false)
     public String getDescricao() {
         return descricao;
     }
@@ -114,10 +110,10 @@ public class Drogas implements Serializable {
     }
 
     /**
-     * @param NomeDroga the NomeDroga to set
+     * @param nomeDroga the NomeDroga to set
      */
-    public void setNomedroga(String NomeDroga) {
-        this.NomeDroga = NomeDroga;
+    public void setNomedroga(String nomeDroga) {
+        this.nomeDroga = nomeDroga;
     }
 
     /**
@@ -137,6 +133,7 @@ public class Drogas implements Serializable {
     /**
      * @return the tipo
      */
+    @Enumerated(EnumType.STRING)
     public TipoItem getTipo() {
         return tipo;
     }
@@ -151,6 +148,9 @@ public class Drogas implements Serializable {
     /**
      * @return the Id_Drogas
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="Id_drogas",nullable=false)
     public Long getId_Drogas() {
         return id_Drogas;
     }
@@ -161,7 +161,31 @@ public class Drogas implements Serializable {
     public void setId_Drogas(Long id_Drogas) {
         this.id_Drogas = id_Drogas;
     }
-    
+    @Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id_Drogas == null) ? 0 : id_Drogas.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Drogas other = (Drogas) obj;
+		if (id_Drogas == null) {
+			if (other.id_Drogas != null)
+				return false;
+		} else if (!id_Drogas.equals(other.id_Drogas))
+			return false;
+		return true;
+	}
+
     
     
 }

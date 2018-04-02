@@ -18,48 +18,25 @@ import org.hibernate.validator.constraints.NotEmpty;
  *
  * @author Helio
  */
-
 @Entity
-@Table(name ="ganho")
-public class Ganho implements Serializable{
-      
-    
-     private static final long serialVersionUID = 1L;
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="Id_ganho",nullable=false)
+@Table(name = "ganho")
+public class Ganho implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private Long id;
-    
-    @NotEmpty
-    @Column(name="soro",nullable=false)
     private String Soro;
-    
-    
-    @Column(name="volume")
     private String Volume;
-    
-    @NotEmpty
-    @Column(name="medicacao", nullable=false)
     private String Medicacao;
-    
-    @NotEmpty
-    @Column(name="descricao", nullable=false)
     private String Descricao;
-    
-    @NotEmpty
-    @Column(name="hemocomponente", nullable=false)
     private String Hemocomponente;
-    
-    @OneToMany(mappedBy = "ganho", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TiposGanhos> itens = new ArrayList<>();
-   
-   
-   
+
     /**
      * @return the Soro
      */
-  
+    @NotEmpty
+    @Column(name = "soro", nullable = false)
     public String getSoro() {
         return Soro;
     }
@@ -74,6 +51,8 @@ public class Ganho implements Serializable{
     /**
      * @return the Volume
      */
+    @NotEmpty
+    @Column(name = "volume", nullable = false)
     public String getVolume() {
         return Volume;
     }
@@ -88,6 +67,8 @@ public class Ganho implements Serializable{
     /**
      * @return the MedicaÃ§Ã£o
      */
+    @NotEmpty
+    @Column(name = "medicacao", nullable = false)
     public String getMedicao() {
         return getMedicacao();
     }
@@ -102,6 +83,8 @@ public class Ganho implements Serializable{
     /**
      * @return the Hemocomponente
      */
+    @NotEmpty
+    @Column(name = "hemocomponente", nullable = false)
     public String getHemocomponente() {
         return Hemocomponente;
     }
@@ -116,6 +99,8 @@ public class Ganho implements Serializable{
     /**
      * @return the Itens
      */
+    
+    @OneToMany(mappedBy = "ganho", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<TiposGanhos> getItens() {
         return itens;
     }
@@ -130,6 +115,8 @@ public class Ganho implements Serializable{
     /**
      * @return the descricao
      */
+    @NotEmpty
+    @Column(name = "descricao", nullable = false)
     public String getDescricao() {
         return Descricao;
     }
@@ -144,6 +131,9 @@ public class Ganho implements Serializable{
     /**
      * @return the Id_Ganho
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Id_ganho", nullable = false)
     public Long getId() {
         return id;
     }
@@ -158,6 +148,8 @@ public class Ganho implements Serializable{
     /**
      * @return the Medicacao
      */
+    @NotEmpty
+    @Column(name = "medicacao", nullable = false)
     public String getMedicacao() {
         return Medicacao;
     }
@@ -168,31 +160,35 @@ public class Ganho implements Serializable{
     public void setMedicacao(String Medicacao) {
         this.Medicacao = Medicacao;
     }
-    
+
     @Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Ganho other = (Ganho) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Ganho other = (Ganho) obj;
+        if (id == null) {
+            if (other.id != null) {
+                return false;
+            }
+        } else if (!id.equals(other.id)) {
+            return false;
+        }
+        return true;
+    }
 
-    
 }

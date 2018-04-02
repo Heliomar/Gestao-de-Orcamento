@@ -33,9 +33,10 @@ public class GestaoDePerdasBean implements Serializable {
     }
     
     @PostConstruct
-    public void Init(){
-   
+    public void Init(){   
     }
+    
+     @Inject
      private Perda perda;
      
 
@@ -47,7 +48,7 @@ public class GestaoDePerdasBean implements Serializable {
     public void salvarPerda(Perda perda)
     {
      if (perda != null){
-       gestaoPerdas.salvar(perda);
+     this.gestaoPerdas.salvar(perda);
                        
             FacesMessage msg = new FacesMessage("As Perdas salva com sucesso!");
 	    FacesContext.getCurrentInstance().addMessage("Perdas", msg);

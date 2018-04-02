@@ -41,8 +41,8 @@ public class Usuario implements Serializable{
     @Column(name="nomePaciente")
     private String NomePaciente;
     
-    
-    @Column(name="atendimento")
+    @NotNull
+    @Column(name="atendimento",nullable = false)
     private String Atendimento;
     
    
@@ -50,7 +50,8 @@ public class Usuario implements Serializable{
     @Column(name = "data")
     private Date data;
     
-    @Column(name="nomeMedico")
+    @NotNull
+    @Column(name="nomeMedico", nullable = false)
     private String NomeMedico;
     
    
@@ -140,5 +141,29 @@ public class Usuario implements Serializable{
     public void setId_usuario(Integer id_usuario) {
         this.id_usuario = id_usuario;
     }
-    
+    @Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id_usuario == null) ? 0 : id_usuario.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		if (id_usuario == null) {
+			if (other.id_usuario != null)
+				return false;
+		} else if (!id_usuario.equals(other.id_usuario))
+			return false;
+		return true;
+	}
+
 }

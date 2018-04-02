@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.algaworks.comercial.controller;
 
 
+import com.algaworks.comercial.Hibernate.HibernateUtil;
 import com.algaworks.comercial.model.Dao.Ganho;
 import com.algaworks.comercial.model.Dto.TiposGanhos;
 import com.algaworks.comercial.service.GestaoGanhos;
@@ -18,6 +14,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.hibernate.SessionFactory;
 
 
 @ViewScoped
@@ -34,24 +31,31 @@ public class GestaoDeGanhosBean implements Serializable{
     
     @PostConstruct
     public void Init(){
-    System.out.println("inicializando Ganhos Bean...!");
     }
     
     public  GestaoDeGanhosBean(){
     ganho = new Ganho();
-    System.out.println("inicializando classe Ganhos....!");
     }
     
     public void salvaGanhos(Ganho ganho)
     {
+      
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        if(!sessionFactory.openSession().beginTransaction().isActive())
+            sessionFactory.openSession().beginTransaction().begin();
         try{
             if(ganho != null)
+            
+            sessionFactory.openSession().save(ganho);
+            sessionFactory.openSession().persist(ganho);
+            
+            
                 
         gestaoGanhos.SalvarGanhos(ganho);
 //  
         
         FacesMessage msg = new FacesMessage("Gestão de  Ganhos Salvo com sucesso!");
-        FacesContext.getCurrentInstance().addMessage("Ganhos", msg);
+        FacesContext.getCurrentInstance().addMessage("Ganho", msg);
         
         }catch(Exception ex ){
         
@@ -79,11 +83,15 @@ public class GestaoDeGanhosBean implements Serializable{
     }
    
     public Ganho getGanho() {
+        if(ganho == null){
+        ganho = new Ganho();
+        }
         return ganho;
     }
   
     public TiposGanhos getItem() {
-        
+        if(item == null)
+            item = item;
         return item;
     }
 

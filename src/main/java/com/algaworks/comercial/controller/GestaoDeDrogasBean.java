@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.algaworks.comercial.controller;
 
 import com.algaworks.comercial.Hibernate.HibernateUtil;
@@ -38,9 +33,6 @@ public class GestaoDeDrogasBean implements Serializable {
     private HttpServletResponse response;
 
     @Inject
-    private EntityManager manager;
-
-    @Inject
     private GestaoDrogas gestaoDrogas;
 
     private TipoItemDroga item;
@@ -48,13 +40,10 @@ public class GestaoDeDrogasBean implements Serializable {
 
     @PostConstruct
     public void Init() {
-        System.out.println("Inicializando GestÃ£o de Drogas  Bean....!");
+      }
 
-    }
-
-    public GestaoDeDrogasBean() {
-        drogas = new Drogas();
-    }
+    public GestaoDeDrogasBean(){
+       }
 
     public void NovaDroga() {
         setItem(new TipoItemDroga());
@@ -67,15 +56,14 @@ public class GestaoDeDrogasBean implements Serializable {
     }
 
     public Drogas SalvarDrogas(Drogas drogas) {
-        SessionFactory session = HibernateUtil.getSessionFactory();
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        sessionFactory.openSession().getTransaction().begin();  
         try {
-            session.openSession();
-           
-            manager.persist(drogas);
-            getGestaoDrogas().salvar(drogas);
+                   if(drogas != null)
+                       sessionFactory.openSession().persist(drogas);
+            this.gestaoDrogas.salvar(drogas);
+            System.out.println("Salvando drogas bem....!");
             
-            session.close();
-
             FacesMessage msg = new FacesMessage("Drogas salvas com sucesso!");
             FacesContext.getCurrentInstance().addMessage("Drogas", msg);
 
@@ -85,8 +73,15 @@ public class GestaoDeDrogasBean implements Serializable {
             FacesContext.getCurrentInstance().addMessage("Drogas", msg);
 
             System.out.println("Problemas de salvar Drogas");
+        }finally{
+            
+            sessionFactory.close();
+            
+        System.out.println("finalizando drogas bem....!");
+        
         }
         return drogas;
+        
     }
 
     /**
